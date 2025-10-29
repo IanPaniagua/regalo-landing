@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { QuestionCard } from "@/components/ui/QuestionCard";
@@ -161,7 +162,7 @@ export default function QuestionnairePage() {
       {/* Main content - flex-1 to fill available space with scroll */}
       <div className="flex-1 overflow-y-auto min-h-0">
         <Container className="h-full py-4 lg:py-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 items-start min-h-full">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-start min-h-full">
             {/* Left side - Description and visual */}
             <div
               className={`flex flex-col transition-all duration-700 transform ${
@@ -170,60 +171,96 @@ export default function QuestionnairePage() {
                   : "-translate-x-12 opacity-0"
               }`}
             >
-              <h1 className="font-display text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-neutral-900 mb-3 lg:mb-4">
-                {step.title}
-              </h1>
+              <div className="rounded-3xl border border-neutral-200 bg-neutral-50 p-4 sm:p-5 lg:p-6 shadow-sm">
+                <h1 className="font-display text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-neutral-900 mb-3 lg:mb-4">
+                  {step.title}
+                </h1>
 
-              <p className="font-sans text-sm sm:text-base lg:text-lg text-neutral-700 leading-relaxed mb-4 lg:mb-6">
-                {step.description}
-              </p>
+                <p className="font-sans text-sm sm:text-base lg:text-lg text-neutral-700 leading-relaxed mb-4 lg:mb-6">
+                  {step.description}
+                </p>
 
-              {/* Visual placeholder - wide rectangular format */}
-              <div className="bg-neutral-100 rounded-3xl w-full aspect-[16/9] flex items-center justify-center">
-                <span className="text-neutral-400 font-sans text-xs lg:text-sm">
-                  Visual placeholder
-                </span>
+                {/* Visual - show specific image for known steps, else placeholder */}
+                {["calendar", "profile", "access", "reminders", "share"].includes(step.id) ? (
+                  <div className="relative w-full aspect-[16/9] rounded-2xl overflow-hidden">
+                    <Image
+                      src={
+                        step.id === "calendar"
+                          ? "/calender.png"
+                          : step.id === "profile"
+                          ? "/profile.jpg"
+                          : step.id === "access"
+                          ? "/share.jpg"
+                          : step.id === "reminders"
+                          ? "/reminder.jpg"
+                          : "/together.png"
+                      }
+                      alt={
+                        step.id === "calendar"
+                          ? "Calendar"
+                          : step.id === "profile"
+                          ? "Profile"
+                          : step.id === "access"
+                          ? "Access Profile"
+                          : step.id === "reminders"
+                          ? "Reminders"
+                          : "Next Steps"
+                      }
+                      fill
+                      className="object-cover"
+                      sizes="(min-width: 1024px) 45vw, 100vw"
+                    />
+                  </div>
+                ) : (
+                  <div className="rounded-2xl w-full aspect-[16/9] flex items-center justify-center">
+                    <span className="text-neutral-400 font-sans text-xs lg:text-sm">
+                      Visual placeholder
+                    </span>
+                  </div>
+                )}
               </div>
             </div>
 
             {/* Right side - Questions */}
             <div
-              className={`flex flex-col transition-all duration-700 transform ${
+              className={`flex flex-col transition-all duration-700 transform lg:border-l lg:border-neutral-200 lg:pl-10 ${
                 showDescription
                   ? "translate-x-0 opacity-100"
                   : "translate-x-12 opacity-0"
               }`}
             >
-              {/* Section Title */}
-              <h2 className="font-display text-xl sm:text-2xl lg:text-3xl font-semibold text-neutral-900 mb-4 lg:mb-6">
-                About {step.title}
-              </h2>
+              <div className="rounded-3xl border border-neutral-200 bg-white p-4 sm:p-5 lg:p-6 shadow-sm">
+                {/* Section Title */}
+                <h2 className="font-display text-xl sm:text-2xl lg:text-3xl font-semibold text-neutral-900 mb-4 lg:mb-6">
+                  About {step.title}
+                </h2>
 
-              <div className="space-y-4 lg:space-y-6">
-                {step.questions.map((question, index) => (
-                  <div
-                    key={question.id}
-                    className="transition-all duration-500"
-                    style={{
-                      transitionDelay: showDescription ? `${(index + 1) * 200}ms` : "0ms",
-                    }}
-                  >
-                    <QuestionCard
-                      question={question}
-                      value={
-                        formData[question.id]?.value ||
-                        (question.type === "multiple-choice" ? [] : "")
-                      }
-                      onChange={(value) => handleQuestionChange(question.id, value)}
-                      textValue={formData[question.id]?.textValue || ""}
-                      onTextChange={
-                        question.hasTextInput
-                          ? (value) => handleTextChange(question.id, value)
-                          : undefined
-                      }
-                    />
-                  </div>
-                ))}
+                <div className="space-y-4 lg:space-y-6">
+                  {step.questions.map((question, index) => (
+                    <div
+                      key={question.id}
+                      className="transition-all duration-500"
+                      style={{
+                        transitionDelay: showDescription ? `${(index + 1) * 200}ms` : "0ms",
+                      }}
+                    >
+                      <QuestionCard
+                        question={question}
+                        value={
+                          formData[question.id]?.value ||
+                          (question.type === "multiple-choice" ? [] : "")
+                        }
+                        onChange={(value) => handleQuestionChange(question.id, value)}
+                        textValue={formData[question.id]?.textValue || ""}
+                        onTextChange={
+                          question.hasTextInput
+                            ? (value) => handleTextChange(question.id, value)
+                            : undefined
+                        }
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>

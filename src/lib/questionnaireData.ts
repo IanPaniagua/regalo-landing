@@ -165,7 +165,7 @@ export const questionnaireSteps: QuestionnaireStep[] = [
   },
   {
     id: "share",
-    title: "Share",
+    title: "Next Steps",
     // ES: Genial ya conoces la app mucho mejor !!! En el futuro tambien queremos que puedas crear un Gruppo para organizar regalos. Pero mas adlante. De momento puedes instribirte a nuestra warte-list.
     description: "Great! You now know the app much better! In the future we also want you to be able to create a Group to organize gifts. But more on that later. For now you can join our waiting list.",
     icon: "share",
