@@ -99,3 +99,29 @@ export const trackQuestionnaireExit = (stepId: string, stepNumber: number) => {
     step_number: stepNumber
   });
 };
+
+// ==================== WAITLIST EVENTS ====================
+
+/**
+ * Track when waitlist form is shown
+ */
+export const trackWaitlistView = (source: string) => {
+  logEvent('waitlist_view', { source });
+};
+
+/**
+ * Track waitlist signup success
+ */
+export const trackWaitlistSignup = (source: string) => {
+  logEvent('waitlist_signup', { 
+    source,
+    timestamp: new Date().toISOString()
+  });
+};
+
+/**
+ * Track when user skips waitlist
+ */
+export const trackWaitlistSkip = (source: string) => {
+  logEvent('waitlist_skip', { source });
+};

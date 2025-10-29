@@ -31,13 +31,15 @@ if (typeof window !== 'undefined') {
     firestore = getFirestore(app);
     
     // Initialize Analytics only if supported (not blocked by ad blockers)
-    isSupported().then((supported) => {
+    isSupported().then((supported: boolean) => {
       if (supported) {
         analytics = getAnalytics(app);
         console.log('✅ Firebase Analytics initialized');
       } else {
         console.warn('⚠️ Firebase Analytics not supported in this browser');
       }
+    }).catch((error) => {
+      console.error('❌ Error initializing Firebase Analytics:', error);
     });
   } else {
     app = getApps()[0];

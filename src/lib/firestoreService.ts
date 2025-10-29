@@ -84,6 +84,42 @@ function getSessionId(): string {
 }
 
 /**
+ * Save waitlist signup to Firestore
+ */
+export const saveWaitlistSignup = async (
+  email: string,
+  name: string,
+  source: 'questionnaire' | 'landing' = 'questionnaire'
+): Promise<string | null> => {
+  if (typeof window === 'undefined' || !firestore) {
+    console.warn('Firestore not available');
+    return null;
+  }
+
+  try {
+    const docRef = await addDoc(collection(firestore, 'waitlist_signups'), {
+      email: email.toLowerCase().trim(),
+      name: name.trim(),
+      source,
+      metadata: {
+        userAgent: navigator.userAgent,
+        language: navigator.language,
+        referrer: document.referrer || 'direct',
+        sessionId: getSessionId(),
+      },
+      timestamp: serverTimestamp(),
+      createdAt: new Date().toISOString(),
+    });
+
+    console.log('✅ Waitlist signup saved:', docRef.id);
+    return docRef.id;
+  } catch (error) {
+    console.error('❌ Error saving waitlist signup:', error);
+    return null;
+  }
+};
+
+/**
  * Calculate feature interest scores from questionnaire responses
  * Returns aggregated scores for each feature
  */

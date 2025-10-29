@@ -14,9 +14,13 @@ import {
   trackQuestionnaireStep, 
   trackQuestionnaireComplete,
   trackQuestionnaireExit,
-  trackQuestionResponse 
+  trackQuestionResponse,
+  trackWaitlistView,
+  trackWaitlistSignup,
+  trackWaitlistSkip
 } from "@/lib/analytics";
-import { saveQuestionnaireToFirestore, calculateFeatureScores } from "@/lib/firestoreService";
+import { saveQuestionnaireToFirestore, calculateFeatureScores, saveWaitlistSignup } from "@/lib/firestoreService";
+import { WaitlistForm } from "@/components/ui/WaitlistForm";
 
 interface FormData {
   [key: string]: {
@@ -36,6 +40,8 @@ export default function QuestionnairePage() {
   const [isComplete, setIsComplete] = useState(false);
   const [showDescription, setShowDescription] = useState(false);
   const [startTime] = useState(Date.now());
+  const [showWaitlist, setShowWaitlist] = useState(false);
+  const [waitlistJoined, setWaitlistJoined] = useState(false);
 
   const step = questionnaireSteps[currentStep];
   const isLastStep = currentStep === questionnaireSteps.length - 1;
@@ -44,6 +50,13 @@ export default function QuestionnairePage() {
   useEffect(() => {
     trackQuestionnaireStart();
   }, []);
+
+  // Track waitlist view when shown
+  useEffect(() => {
+    if (showWaitlist && !waitlistJoined) {
+      trackWaitlistView('questionnaire');
+    }
+  }, [showWaitlist, waitlistJoined]);
 
   // Animation sequence: both sides appear smoothly from their directions
   // Reset and trigger animation on step change
@@ -125,17 +138,33 @@ export default function QuestionnairePage() {
     router.push("/");
   };
   
+  const handleWaitlistSubmit = async (email: string, name: string) => {
+    // Save to Firestore
+    await saveWaitlistSignup(email, name, 'questionnaire');
+    
+    // Track signup
+    trackWaitlistSignup('questionnaire');
+    
+    // Update state
+    setWaitlistJoined(true);
+  };
+  
+  const handleWaitlistSkip = () => {
+    trackWaitlistSkip('questionnaire');
+    router.push("/");
+  };
+  
   const handleExit = () => {
     // Track exit/dropoff
     trackQuestionnaireExit(step.id, currentStep + 1);
     router.push("/");
   };
 
-  // Thank you screen
+  // Thank you screen with waitlist
   if (isComplete) {
     return (
       <main
-        className="min-h-screen bg-white flex items-center justify-center"
+        className="min-h-screen bg-white flex items-center justify-center py-12"
         data-analytics-section="questionnaire-complete"
       >
         <Container>
@@ -144,22 +173,87 @@ export default function QuestionnairePage() {
               <Logo size="lg" />
             </div>
 
-            <h1 className="font-display text-5xl sm:text-6xl font-bold text-neutral-900 mb-6">
-              THANK YOU!
-            </h1>
+            {!waitlistJoined ? (
+              // Show waitlist form
+              !showWaitlist ? (
+                // Initial thank you with CTA
+                <>
+                  <h1 className="font-display text-5xl sm:text-6xl font-bold text-neutral-900 mb-6">
+                    THANK YOU!
+                  </h1>
 
-            <p className="font-sans text-xl text-neutral-700 mb-12 leading-relaxed">
-              Your feedback is invaluable to us. We've saved your responses and will use them to make Regalo even better!
-            </p>
+                  <p className="font-sans text-xl text-neutral-700 mb-8 leading-relaxed">
+                    Your feedback is invaluable to us. We've saved your responses and will use them to make Regalo even better!
+                  </p>
 
-            <Button
-              variant="primary"
-              size="lg"
-              onClick={handleGoHome}
-              data-analytics-id="questionnaire-home"
-            >
-              Back to Home
-            </Button>
+                  <p className="font-sans text-lg text-neutral-600 mb-8">
+                    Want to be the first to know when Regalo launches?
+                  </p>
+
+                  <div className="space-y-4">
+                    <Button
+                      variant="primary"
+                      size="lg"
+                      onClick={() => setShowWaitlist(true)}
+                      data-analytics-id="show-waitlist-form"
+                      className="w-full sm:w-auto"
+                    >
+                      Join Waitlist 🎉
+                    </Button>
+
+                    <div>
+                      <button
+                        onClick={handleGoHome}
+                        className="text-neutral-500 hover:text-neutral-700 transition-colors font-sans text-sm"
+                        data-analytics-id="skip-waitlist-home"
+                      >
+                        Maybe later, back to home
+                      </button>
+                    </div>
+                  </div>
+                </>
+              ) : (
+                // Show waitlist form
+                <>
+                  <h2 className="font-display text-4xl sm:text-5xl font-bold text-neutral-900 mb-4">
+                    Join the Waitlist
+                  </h2>
+
+                  <p className="font-sans text-lg text-neutral-600 mb-8">
+                    Be the first to experience Regalo when we launch!
+                  </p>
+
+                  <WaitlistForm
+                    onSubmit={handleWaitlistSubmit}
+                    onSkip={handleWaitlistSkip}
+                  />
+                </>
+              )
+            ) : (
+              // Waitlist joined confirmation
+              <>
+                <div className="mb-6">
+                  <span className="text-6xl">🎉</span>
+                </div>
+
+                <h1 className="font-display text-5xl sm:text-6xl font-bold text-neutral-900 mb-6">
+                  You're on the list!
+                </h1>
+
+                <p className="font-sans text-xl text-neutral-700 mb-8 leading-relaxed">
+                  We'll notify you as soon as Regalo is ready. Get ready for a better way to give gifts!
+                </p>
+
+                <Button
+                  variant="primary"
+                  size="lg"
+                  onClick={handleGoHome}
+                  data-analytics-id="waitlist-joined-home"
+                >
+                  Back to Home
+                </Button>
+              </>
+            )}
           </div>
         </Container>
       </main>

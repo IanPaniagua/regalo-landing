@@ -123,6 +123,12 @@ service cloud.firestore {
       allow create: if true;
       allow read, update, delete: if false;
     }
+    
+    // Permitir a cualquiera unirse a la waitlist
+    match /waitlist_signups/{document} {
+      allow create: if true;
+      allow read, update, delete: if false;
+    }
   }
 }
 ```

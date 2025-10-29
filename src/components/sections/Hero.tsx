@@ -1,8 +1,10 @@
 "use client";
 
 import React from "react";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
+import { trackButtonClick } from "@/lib/analytics";
 
 /**
  * Hero section component
@@ -10,11 +12,19 @@ import { Container } from "@/components/ui/Container";
  * Features a gray background with white card overlay
  */
 export const Hero: React.FC = () => {
+  const router = useRouter();
+  
   const handleDiscover = () => {
+    trackButtonClick("hero-discover", "hero");
     const el = document.getElementById("cta");
     if (el) {
       el.scrollIntoView({ behavior: "smooth", block: "start" });
     }
+  };
+
+  const handleWaitlist = () => {
+    trackButtonClick("hero-waitlist", "hero");
+    router.push("/waitlist");
   };
 
   return (
@@ -30,15 +40,27 @@ export const Hero: React.FC = () => {
               Regalo is an app to keep your gifts up to date
             </h1>
             
-            <Button
-              variant="primary"
-              size="lg"
-              className="w-full"
-              data-analytics-id="hero-cta-discover"
-              onClick={handleDiscover}
-            >
-              Discover More
-            </Button>
+            <div className="space-y-3">
+              <Button
+                variant="primary"
+                size="lg"
+                className="w-full"
+                data-analytics-id="hero-cta-discover"
+                onClick={handleDiscover}
+              >
+                Discover More
+              </Button>
+              
+              <Button
+                variant="secondary"
+                size="lg"
+                className="w-full"
+                data-analytics-id="hero-waitlist"
+                onClick={handleWaitlist}
+              >
+                Join Waitlist
+              </Button>
+            </div>
           </div>
         </div>
       </Container>
