@@ -37,7 +37,7 @@ export const Hero: React.FC = () => {
           {/* White card with content */}
           <div className="bg-white rounded-3xl p-8 sm:p-10 shadow-2xl">
             <h1 className="font-display text-3xl sm:text-4xl font-semibold text-neutral-900 mb-6 leading-tight">
-              Regalo is an app to keep your gifts up to date
+              Regalo is a movile App to keep your gifts up to date
             </h1>
             
             <div className="space-y-3">

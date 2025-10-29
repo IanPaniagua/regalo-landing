@@ -27,7 +27,12 @@ export const CTASection: React.FC = () => {
       <Container>
         <div className="text-center max-w-3xl mx-auto">
           <h2 className="font-display text-3xl sm:text-4xl font-semibold text-neutral-900 mb-8 leading-tight">
-            To introduce you to the app, we have designed an interactive questionnaire. 
+            To introduce you to the app, we have designed an{' '}
+            <span className="relative inline-block">
+              <span className="relative z-10">interactive questionnaire</span>
+              <span className="absolute bottom-0 left-0 w-full h-1 bg-secondary-gold"></span>
+            </span>
+            .{' '}
             While we explain it, you can collaborate with your feedback :)
           </h2>
           
