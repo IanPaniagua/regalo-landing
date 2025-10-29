@@ -5,7 +5,7 @@ import { logEvent as firebaseLogEvent } from 'firebase/analytics';
  * Safely log analytics events
  * Only logs if analytics is initialized and available
  */
-const logEvent = (eventName: string, eventParams?: Record<string, any>) => {
+export const logEvent = (eventName: string, eventParams?: Record<string, any>) => {
   if (typeof window === 'undefined') return;
   
   if (analytics) {
