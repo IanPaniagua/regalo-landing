@@ -3,15 +3,21 @@ import { logEvent as firebaseLogEvent } from 'firebase/analytics';
 
 /**
  * Safely log analytics events
- * Only logs if analytics is initialized and in browser
+ * Only logs if analytics is initialized and available
  */
-export const logEvent = (eventName: string, params?: Record<string, any>) => {
-  if (typeof window !== 'undefined' && analytics) {
+const logEvent = (eventName: string, eventParams?: Record<string, any>) => {
+  if (typeof window === 'undefined') return;
+  
+  if (analytics) {
+    console.log(`📊 Tracking event: ${eventName}`, eventParams);
     try {
-      firebaseLogEvent(analytics, eventName, params);
+      firebaseLogEvent(analytics, eventName, eventParams);
     } catch (error) {
       console.error('Analytics error:', error);
     }
+  } else {
+    console.warn(`⚠️ Cannot track "${eventName}" - Analytics not initialized yet`);
+    console.warn('⚠️ Check for ad blockers or browser privacy settings');
   }
 };
 
