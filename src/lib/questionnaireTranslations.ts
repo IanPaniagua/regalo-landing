@@ -4,14 +4,33 @@ export const questionnaireTranslations = {
   en: {
     steps: [
       {
-        id: "forgot-gift",
-        title: "Have you ever forgotten to give a gift on an important date?",
-        description: "We've all been there. Let's see how often this happens to you.",
-        options: [
-          { value: "yes-often", label: "Yes, it happens often" },
-          { value: "sometimes", label: "Sometimes" },
-          { value: "rarely", label: "Rarely" },
-          { value: "no-never", label: "No, never" },
+        id: "calendar",
+        title: "Calendar",
+        description: "The idea came because many of us often forget important dates, like a family member's birthday. That's why we'll have a calendar just for that in the app!",
+        icon: "calendar" as const,
+        questions: [
+          {
+            id: "forgot-gift",
+            type: "single-choice" as const,
+            question: "Between you and me, have you ever forgotten to buy an important gift or done it at the last minute?",
+            options: [
+              { value: "no-never", label: "No, never" },
+              { value: "rarely", label: "Rarely" },
+              { value: "once", label: "Yes, but I forgot once" },
+              { value: "very-often", label: "Very often" },
+            ],
+          },
+          {
+            id: "use-calendar",
+            type: "single-choice" as const,
+            question: "Do you use Google Calendar or others to note important dates for giving gifts?",
+            options: [
+              { value: "no-never", label: "No, never" },
+              { value: "rarely", label: "Rarely" },
+              { value: "once", label: "Yes, but I forgot once" },
+              { value: "very-often", label: "Very often" },
+            ],
+          },
         ],
       },
       {

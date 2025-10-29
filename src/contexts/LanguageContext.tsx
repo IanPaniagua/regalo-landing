@@ -24,6 +24,10 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       const browserLang = navigator.language.toLowerCase();
       const detectedLang = browserLang.startsWith('es') ? 'es' : 'en';
       setLanguageState(detectedLang);
+      
+      // Log detection for debugging
+      console.log('🌐 Browser language detected:', navigator.language);
+      console.log('🌐 Setting language to:', detectedLang);
     }
   }, []);
 

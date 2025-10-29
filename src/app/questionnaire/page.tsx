@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { QuestionCard } from "@/components/ui/QuestionCard";
-import { questionnaireSteps } from "@/lib/questionnaireData";
+import { getTranslatedQuestionnaireSteps } from "@/lib/questionnaireDataTranslated";
 import { Logo } from "@/components/ui/Logo";
 import { saveQuestionnaireData } from "@/lib/questionnaireStorage";
 import { useRouter } from "next/navigation";
@@ -21,6 +21,7 @@ import {
 } from "@/lib/analytics";
 import { saveQuestionnaireToFirestore, calculateFeatureScores, saveWaitlistSignup } from "@/lib/firestoreService";
 import { WaitlistForm } from "@/components/ui/WaitlistForm";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface FormData {
   [key: string]: {
@@ -35,6 +36,7 @@ interface FormData {
  */
 export default function QuestionnairePage() {
   const router = useRouter();
+  const { t, language } = useLanguage();
   const [currentStep, setCurrentStep] = useState(0);
   const [formData, setFormData] = useState<FormData>({});
   const [isComplete, setIsComplete] = useState(false);
@@ -43,6 +45,7 @@ export default function QuestionnairePage() {
   const [showWaitlist, setShowWaitlist] = useState(false);
   const [waitlistJoined, setWaitlistJoined] = useState(false);
 
+  const questionnaireSteps = getTranslatedQuestionnaireSteps(language);
   const step = questionnaireSteps[currentStep];
   const isLastStep = currentStep === questionnaireSteps.length - 1;
 
@@ -179,15 +182,15 @@ export default function QuestionnairePage() {
                 // Initial thank you with CTA
                 <>
                   <h1 className="font-display text-5xl sm:text-6xl font-bold text-neutral-900 mb-6">
-                    THANK YOU!
+                    {t.questionnaire.thankYou}
                   </h1>
 
                   <p className="font-sans text-xl text-neutral-700 mb-8 leading-relaxed">
-                    Your feedback is invaluable to us. We've saved your responses and will use them to make Regalo even better!
+                    {t.questionnaire.thankYouMessage}
                   </p>
 
                   <p className="font-sans text-lg text-neutral-600 mb-8">
-                    Want to be the first to know when Regalo launches?
+                    {t.questionnaire.wantEarlyAccess}
                   </p>
 
                   <div className="space-y-4">
@@ -198,7 +201,7 @@ export default function QuestionnairePage() {
                       data-analytics-id="show-waitlist-form"
                       className="w-full sm:w-auto"
                     >
-                      Join Waitlist 🎉
+                      {t.questionnaire.joinWaitlistCta}
                     </Button>
 
                     <div>
@@ -207,7 +210,7 @@ export default function QuestionnairePage() {
                         className="text-neutral-500 hover:text-neutral-700 transition-colors font-sans text-sm"
                         data-analytics-id="skip-waitlist-home"
                       >
-                        Maybe later, back to home
+                        {t.questionnaire.maybeLater}
                       </button>
                     </div>
                   </div>
@@ -216,11 +219,11 @@ export default function QuestionnairePage() {
                 // Show waitlist form
                 <>
                   <h2 className="font-display text-4xl sm:text-5xl font-bold text-neutral-900 mb-4">
-                    Join the Waitlist
+                    {t.waitlist.title}
                   </h2>
 
                   <p className="font-sans text-lg text-neutral-600 mb-8">
-                    Be the first to experience Regalo when we launch!
+                    {t.waitlist.subtitle}
                   </p>
 
                   <WaitlistForm
@@ -237,11 +240,11 @@ export default function QuestionnairePage() {
                 </div>
 
                 <h1 className="font-display text-5xl sm:text-6xl font-bold text-neutral-900 mb-6">
-                  You're on the list!
+                  {t.waitlist.successTitle}
                 </h1>
 
                 <p className="font-sans text-xl text-neutral-700 mb-8 leading-relaxed">
-                  We'll notify you as soon as Regalo is ready. Get ready for a better way to give gifts!
+                  {t.waitlist.successMessage}
                 </p>
 
                 <Button
@@ -250,7 +253,7 @@ export default function QuestionnairePage() {
                   onClick={handleGoHome}
                   data-analytics-id="waitlist-joined-home"
                 >
-                  Back to Home
+                  {t.waitlist.backHome}
                 </Button>
               </>
             )}
@@ -276,7 +279,7 @@ export default function QuestionnairePage() {
               className="absolute right-0 text-neutral-500 hover:text-neutral-900 transition-colors font-sans text-sm"
               data-analytics-id="questionnaire-exit"
             >
-              Exit
+              {t.questionnaire.exit}
             </button>
           </div>
         </Container>
@@ -418,7 +421,7 @@ export default function QuestionnairePage() {
               className={currentStep === 0 ? "opacity-50 cursor-not-allowed" : ""}
               data-analytics-id="questionnaire-back"
             >
-              Back
+              {t.questionnaire.back}
             </Button>
 
             <Button
@@ -429,7 +432,7 @@ export default function QuestionnairePage() {
                 isLastStep ? "questionnaire-submit" : "questionnaire-next"
               }
             >
-              {isLastStep ? "Submit" : "Next"}
+              {isLastStep ? t.questionnaire.submit : t.questionnaire.next}
             </Button>
           </div>
         </Container>

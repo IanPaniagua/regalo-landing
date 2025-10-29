@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { Button } from "./Button";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface WaitlistFormProps {
   onSubmit: (email: string, name: string) => Promise<void>;
@@ -13,6 +14,7 @@ interface WaitlistFormProps {
  * Collects email and name for waitlist
  */
 export const WaitlistForm: React.FC<WaitlistFormProps> = ({ onSubmit, onSkip }) => {
+  const { t } = useLanguage();
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -59,7 +61,7 @@ export const WaitlistForm: React.FC<WaitlistFormProps> = ({ onSubmit, onSkip }) 
             id="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            placeholder="John Doe"
+            placeholder={t.waitlist.namePlaceholder}
             className="w-full px-4 py-3 rounded-xl border-2 border-neutral-200 focus:border-secondary-gold focus:outline-none transition-colors font-sans"
             disabled={isSubmitting}
             data-analytics-id="waitlist-name-input"
@@ -79,7 +81,7 @@ export const WaitlistForm: React.FC<WaitlistFormProps> = ({ onSubmit, onSkip }) 
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="john@example.com"
+            placeholder={t.waitlist.emailPlaceholder}
             className="w-full px-4 py-3 rounded-xl border-2 border-neutral-200 focus:border-secondary-gold focus:outline-none transition-colors font-sans"
             disabled={isSubmitting}
             data-analytics-id="waitlist-email-input"
@@ -100,7 +102,7 @@ export const WaitlistForm: React.FC<WaitlistFormProps> = ({ onSubmit, onSkip }) 
           disabled={isSubmitting}
           data-analytics-id="waitlist-submit"
         >
-          {isSubmitting ? "Joining..." : "Join Waitlist 🎉"}
+          {isSubmitting ? "..." : t.waitlist.submit}
         </Button>
 
         {/* Skip Button */}
@@ -112,7 +114,7 @@ export const WaitlistForm: React.FC<WaitlistFormProps> = ({ onSubmit, onSkip }) 
             disabled={isSubmitting}
             data-analytics-id="waitlist-skip"
           >
-            Maybe later
+            {t.waitlist.skip}
           </button>
         )}
       </form>
