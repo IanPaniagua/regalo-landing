@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "./Button";
 import Link from "next/link";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 /**
  * Cookie consent banner
@@ -10,6 +11,7 @@ import Link from "next/link";
  */
 export const CookieBanner: React.FC = () => {
   const [showBanner, setShowBanner] = useState(false);
+  const { t } = useLanguage();
 
   useEffect(() => {
     // Check if user has already made a choice
@@ -40,13 +42,12 @@ export const CookieBanner: React.FC = () => {
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div className="flex-1">
             <p className="font-sans text-sm sm:text-base leading-relaxed">
-              We use cookies and similar technologies to analyze website traffic and improve your experience. 
-              By clicking "Accept", you consent to our use of cookies.{' '}
+              {t.cookies.message}{' '}
               <Link 
                 href="/privacy-policy" 
                 className="text-secondary-gold hover:underline"
               >
-                Learn more
+                {t.cookies.learnMore}
               </Link>
             </p>
           </div>
@@ -59,7 +60,7 @@ export const CookieBanner: React.FC = () => {
               className="flex-1 sm:flex-none"
               data-analytics-id="cookie-decline"
             >
-              Decline
+              {t.cookies.decline}
             </Button>
             <Button
               variant="primary"
@@ -68,7 +69,7 @@ export const CookieBanner: React.FC = () => {
               className="flex-1 sm:flex-none"
               data-analytics-id="cookie-accept"
             >
-              Accept
+              {t.cookies.accept}
             </Button>
           </div>
         </div>

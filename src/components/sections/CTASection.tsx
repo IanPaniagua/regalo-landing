@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { trackButtonClick } from "@/lib/analytics";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 /**
  * Call-to-Action section component
@@ -12,6 +13,7 @@ import { trackButtonClick } from "@/lib/analytics";
  */
 export const CTASection: React.FC = () => {
   const router = useRouter();
+  const { t } = useLanguage();
 
   const handleStartQuestionnaire = () => {
     trackButtonClick("cta-participate", "cta-section");
@@ -27,18 +29,18 @@ export const CTASection: React.FC = () => {
       <Container>
         <div className="text-center max-w-3xl mx-auto">
           <h2 className="font-display text-3xl sm:text-4xl font-semibold text-neutral-900 mb-8 leading-tight">
-            To introduce you to the app, we have designed an{' '}
+            {t.cta.intro}{' '}
             <span className="relative inline-block">
-              <span className="relative z-10">interactive questionnaire</span>
+              <span className="relative z-10">{t.cta.interactiveQuestionnaire}</span>
               <span className="absolute bottom-0 left-0 w-full h-1 bg-secondary-gold"></span>
             </span>
             .{' '}
-            While we explain it, you can collaborate with your feedback :)
+            {t.cta.outro}
           </h2>
           
           <div className="mb-12">
             <p className="font-display text-2xl sm:text-3xl font-semibold text-neutral-900 mb-6">
-              Want to participate?
+              {t.cta.wantToParticipate}
             </p>
             
             <Button
@@ -47,7 +49,7 @@ export const CTASection: React.FC = () => {
               onClick={handleStartQuestionnaire}
               data-analytics-id="cta-participate"
             >
-              Yes! Let&apos;s Go 💪
+              {t.cta.letsGo}
             </Button>
           </div>
         </div>

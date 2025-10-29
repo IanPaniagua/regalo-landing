@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { trackButtonClick } from "@/lib/analytics";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 /**
  * Hero section component
@@ -13,6 +14,7 @@ import { trackButtonClick } from "@/lib/analytics";
  */
 export const Hero: React.FC = () => {
   const router = useRouter();
+  const { t } = useLanguage();
   
   const handleDiscover = () => {
     trackButtonClick("hero-discover", "hero");
@@ -37,7 +39,7 @@ export const Hero: React.FC = () => {
           {/* White card with content */}
           <div className="bg-white rounded-3xl p-8 sm:p-10 shadow-2xl">
             <h1 className="font-display text-3xl sm:text-4xl font-semibold text-neutral-900 mb-6 leading-tight">
-              Regalo is a movile App to keep your gifts up to date
+              {t.hero.title}
             </h1>
             
             <div className="space-y-3">
@@ -48,7 +50,7 @@ export const Hero: React.FC = () => {
                 data-analytics-id="hero-cta-discover"
                 onClick={handleDiscover}
               >
-                Discover More
+                {t.hero.discoverMore}
               </Button>
               
               <Button
@@ -58,7 +60,7 @@ export const Hero: React.FC = () => {
                 data-analytics-id="hero-waitlist"
                 onClick={handleWaitlist}
               >
-                Join Waitlist
+                {t.hero.joinWaitlist}
               </Button>
             </div>
           </div>
