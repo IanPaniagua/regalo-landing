@@ -9,15 +9,11 @@ export const logEvent = (eventName: string, eventParams?: Record<string, any>) =
   if (typeof window === 'undefined') return;
   
   if (analytics) {
-    console.log(`📊 Tracking event: ${eventName}`, eventParams);
     try {
       firebaseLogEvent(analytics, eventName, eventParams);
     } catch (error) {
       console.error('Analytics error:', error);
     }
-  } else {
-    console.warn(`⚠️ Cannot track "${eventName}" - Analytics not initialized yet`);
-    console.warn('⚠️ Check for ad blockers or browser privacy settings');
   }
 };
 

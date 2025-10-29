@@ -26,32 +26,26 @@ let firestore: Firestore;
 
 if (typeof window !== 'undefined') {
   // Client-side initialization only
-  console.log('🔧 Initializing Firebase...');
-  console.log('📊 Measurement ID:', firebaseConfig.measurementId);
-  
   if (!getApps().length) {
     app = initializeApp(firebaseConfig);
     firestore = getFirestore(app);
-    console.log('✅ Firebase app initialized');
     
-    // Initialize Analytics only if supported (not blocked by ad blockers)
-    isSupported().then((supported: boolean) => {
-      console.log('📊 Analytics supported:', supported);
-      if (supported) {
-        analytics = getAnalytics(app);
-        console.log('✅ Firebase Analytics initialized');
-        console.log('📊 Analytics object:', analytics);
-      } else {
-        console.warn('⚠️ Firebase Analytics not supported in this browser');
-        console.warn('⚠️ Possible causes: ad blocker, privacy extension, or browser settings');
-      }
-    }).catch((error) => {
-      console.error('❌ Error initializing Firebase Analytics:', error);
-    });
+    // Check cookie consent before initializing Analytics
+    const cookieConsent = localStorage.getItem('regalo_cookie_consent');
+    
+    if (cookieConsent === 'accepted') {
+      // Initialize Analytics only if user accepted cookies and it's supported
+      isSupported().then((supported: boolean) => {
+        if (supported) {
+          analytics = getAnalytics(app);
+        }
+      }).catch((error) => {
+        console.error('Error initializing Analytics:', error);
+      });
+    }
   } else {
     app = getApps()[0];
     firestore = getFirestore(app);
-    console.log('✅ Using existing Firebase app');
   }
 }
 

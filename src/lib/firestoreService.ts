@@ -34,10 +34,9 @@ export const saveQuestionnaireToFirestore = async (
       createdAt: new Date().toISOString(),
     });
 
-    console.log('✅ Questionnaire saved to Firestore:', docRef.id);
     return docRef.id;
   } catch (error) {
-    console.error('❌ Error saving to Firestore:', error);
+    console.error('Error saving questionnaire response:', error);
     return null;
   }
 };
@@ -111,10 +110,9 @@ export const saveWaitlistSignup = async (
       createdAt: new Date().toISOString(),
     });
 
-    console.log('✅ Waitlist signup saved:', docRef.id);
     return docRef.id;
   } catch (error) {
-    console.error('❌ Error saving waitlist signup:', error);
+    console.error('Error saving waitlist signup:', error);
     return null;
   }
 };
