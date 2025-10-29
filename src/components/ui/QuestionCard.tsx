@@ -44,7 +44,13 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
 
   return (
     <div className="mb-4 lg:mb-6" data-analytics-id={`question-${question.id}`}>
-      <h3 className="font-sans text-sm sm:text-base lg:text-lg text-neutral-800 mb-3 leading-relaxed">
+      <h3 className="font-sans text-sm sm:text-base lg:text-lg text-neutral-800 mb-4 leading-relaxed"
+          style={{
+            textDecoration: 'underline',
+            textDecorationColor: '#D4AF37',
+            textDecorationThickness: '2px',
+            textUnderlineOffset: '4px'
+          }}>
         {question.question}
       </h3>
 
