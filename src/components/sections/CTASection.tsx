@@ -4,6 +4,7 @@ import React from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
+import { trackButtonClick } from "@/lib/analytics";
 
 /**
  * Call-to-Action section component
@@ -13,6 +14,7 @@ export const CTASection: React.FC = () => {
   const router = useRouter();
 
   const handleStartQuestionnaire = () => {
+    trackButtonClick("cta-participate", "cta-section");
     router.push("/questionnaire");
   };
 
@@ -40,7 +42,7 @@ export const CTASection: React.FC = () => {
               onClick={handleStartQuestionnaire}
               data-analytics-id="cta-participate"
             >
-              Yes! Let&apos;s Go :)
+              Yes! Let&apos;s Go 💪
             </Button>
           </div>
         </div>

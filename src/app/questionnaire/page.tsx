@@ -9,6 +9,14 @@ import { questionnaireSteps } from "@/lib/questionnaireData";
 import { Logo } from "@/components/ui/Logo";
 import { saveQuestionnaireData } from "@/lib/questionnaireStorage";
 import { useRouter } from "next/navigation";
+import { 
+  trackQuestionnaireStart, 
+  trackQuestionnaireStep, 
+  trackQuestionnaireComplete,
+  trackQuestionnaireExit,
+  trackQuestionResponse 
+} from "@/lib/analytics";
+import { saveQuestionnaireToFirestore, calculateFeatureScores } from "@/lib/firestoreService";
 
 interface FormData {
   [key: string]: {
@@ -27,13 +35,22 @@ export default function QuestionnairePage() {
   const [formData, setFormData] = useState<FormData>({});
   const [isComplete, setIsComplete] = useState(false);
   const [showDescription, setShowDescription] = useState(false);
+  const [startTime] = useState(Date.now());
 
   const step = questionnaireSteps[currentStep];
   const isLastStep = currentStep === questionnaireSteps.length - 1;
 
+  // Track questionnaire start on mount
+  useEffect(() => {
+    trackQuestionnaireStart();
+  }, []);
+
   // Animation sequence: both sides appear smoothly from their directions
   // Reset and trigger animation on step change
   useEffect(() => {
+    // Track step view
+    trackQuestionnaireStep(step.id, currentStep + 1);
+    
     // Reset animation state
     setShowDescription(false);
 
@@ -45,7 +62,7 @@ export default function QuestionnairePage() {
     return () => {
       clearTimeout(timer);
     };
-  }, [currentStep]);
+  }, [currentStep, step.id]);
 
   const handleQuestionChange = (questionId: string, value: string | string[]) => {
     setFormData((prev) => ({
@@ -55,6 +72,10 @@ export default function QuestionnairePage() {
         value,
       },
     }));
+    
+    // Track question response
+    const responseType = Array.isArray(value) ? 'multiple-choice' : 'single-choice';
+    trackQuestionResponse(questionId, responseType);
   };
 
   const handleTextChange = (questionId: string, textValue: string) => {
@@ -67,9 +88,27 @@ export default function QuestionnairePage() {
     }));
   };
 
-  const handleNext = () => {
+  const handleNext = async () => {
     if (isLastStep) {
-      saveQuestionnaireData(formData);
+      // Calculate time spent
+      const timeSpent = Math.floor((Date.now() - startTime) / 1000);
+      
+      // Track completion
+      trackQuestionnaireComplete(timeSpent);
+      
+      // Calculate feature scores
+      const scores = calculateFeatureScores(formData);
+      
+      // Save to Firestore
+      const firestoreId = await saveQuestionnaireToFirestore(formData, {
+        timeSpent,
+        completedSteps: questionnaireSteps.length,
+        totalSteps: questionnaireSteps.length,
+      });
+      
+      // Save to localStorage with Firestore ID
+      saveQuestionnaireData(formData, firestoreId || undefined);
+      
       setIsComplete(true);
     } else {
       setCurrentStep((prev) => prev + 1);
@@ -83,6 +122,12 @@ export default function QuestionnairePage() {
   };
 
   const handleGoHome = () => {
+    router.push("/");
+  };
+  
+  const handleExit = () => {
+    // Track exit/dropoff
+    trackQuestionnaireExit(step.id, currentStep + 1);
     router.push("/");
   };
 
@@ -133,7 +178,7 @@ export default function QuestionnairePage() {
           <div className="flex justify-center items-center relative">
             <Logo size="md" />
             <button
-              onClick={handleGoHome}
+              onClick={handleExit}
               className="absolute right-0 text-neutral-500 hover:text-neutral-900 transition-colors font-sans text-sm"
               data-analytics-id="questionnaire-exit"
             >
