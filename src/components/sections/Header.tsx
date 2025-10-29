@@ -13,7 +13,7 @@ export const Header: React.FC = () => {
       data-analytics-section="header"
     >
       <Container as="div" className="py-4">
-        <nav className="flex items-center justify-between">
+        <nav className="flex items-center justify-center">
           <Logo size="md" />
         </nav>
       </Container>

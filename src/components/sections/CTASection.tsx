@@ -1,4 +1,7 @@
+"use client";
+
 import React from "react";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 
@@ -7,6 +10,12 @@ import { Container } from "@/components/ui/Container";
  * Encourages user participation with interactive questionnaire
  */
 export const CTASection: React.FC = () => {
+  const router = useRouter();
+
+  const handleStartQuestionnaire = () => {
+    router.push("/questionnaire");
+  };
+
   return (
     <section
       className="py-16 sm:py-24 bg-white"
@@ -27,6 +36,7 @@ export const CTASection: React.FC = () => {
             <Button
               variant="primary"
               size="lg"
+              onClick={handleStartQuestionnaire}
               data-analytics-id="cta-participate"
             >
               Yes! Let&apos;s Go :)

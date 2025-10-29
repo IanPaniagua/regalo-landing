@@ -29,11 +29,23 @@ npm run dev
 
 3. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
+## Features
+
+### Interactive Questionnaire
+The landing page includes a multi-step interactive questionnaire that:
+- Explains app features while collecting user feedback
+- Saves responses to localStorage
+- Includes 5 steps covering Calendar, Profile, Access, Reminders, and Share
+- Accessible via the "Yes! Let's Go :)" CTA button
+
+View responses at `/admin` or see [QUESTIONNAIRE.md](./QUESTIONNAIRE.md) for detailed documentation.
+
 ## Project Structure
 
 ```
 src/
 ├── app/                    # Next.js app directory
+│   ├── admin/             # Admin page for viewing responses
 │   ├── layout.tsx         # Root layout with fonts
 │   ├── page.tsx           # Home page
 │   └── globals.css        # Global styles
@@ -41,6 +53,8 @@ src/
 │   ├── ui/               # UI components (Button, Card, etc.)
 │   └── sections/         # Page sections (Hero, Features, etc.)
 └── lib/                  # Utility functions
+    ├── questionnaireData.ts      # Questionnaire structure
+    └── questionnaireStorage.ts   # LocalStorage utilities
 ```
 
 ## Analytics Ready
