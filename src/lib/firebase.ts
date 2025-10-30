@@ -29,19 +29,33 @@ if (typeof window !== 'undefined') {
   if (!getApps().length) {
     app = initializeApp(firebaseConfig);
     firestore = getFirestore(app);
-    
-    // Check cookie consent before initializing Analytics
     const cookieConsent = localStorage.getItem('regalo_cookie_consent');
-    
-    if (cookieConsent === 'accepted') {
-      // Initialize Analytics only if user accepted cookies and it's supported
-      isSupported().then((supported: boolean) => {
-        if (supported) {
-          analytics = getAnalytics(app);
-        }
-      }).catch((error) => {
-        console.error('Error initializing Analytics:', error);
-      });
+    const host = window.location.hostname;
+    const isLocal = host === 'localhost' || host === '127.0.0.1';
+    const isProdEnv = process.env.NEXT_PUBLIC_VERCEL_ENV === 'production' || process.env.NODE_ENV === 'production';
+    const allowedHosts = (process.env.NEXT_PUBLIC_ANALYTICS_ALLOWED_HOSTS || '')
+      .split(',')
+      .map((h) => h.trim())
+      .filter(Boolean);
+    const hostAllowed = allowedHosts.length === 0 ? true : allowedHosts.includes(host);
+
+    const canEnableAnalytics =
+      !!process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID &&
+      !isLocal &&
+      isProdEnv &&
+      hostAllowed &&
+      cookieConsent === 'accepted';
+
+    if (canEnableAnalytics) {
+      isSupported()
+        .then((supported: boolean) => {
+          if (supported) {
+            analytics = getAnalytics(app);
+          }
+        })
+        .catch((error) => {
+          console.error('Error initializing Analytics:', error);
+        });
     }
   } else {
     app = getApps()[0];
