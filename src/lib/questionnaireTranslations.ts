@@ -315,33 +315,14 @@ export const questionnaireTranslations = {
   de: {
     steps: [
       {
-        id: "calendar",
-        title: "Kalender",
-        description: "Die Idee entstand, weil viele von uns oft wichtige Daten vergessen, z. B. den Geburtstag eines Familienmitglieds. Deshalb wird es in der App einen Kalender genau dafür geben!",
-        icon: "calendar" as const,
-        questions: [
-          {
-            id: "forgot-gift",
-            type: "single-choice" as const,
-            question: "Unter uns: Hast du schon einmal vergessen, ein wichtiges Geschenk zu besorgen – oder es in letzter Minute gekauft?",
-            options: [
-              { value: "no-never", label: "Nein, nie" },
-              { value: "rarely", label: "Selten" },
-              { value: "once", label: "Ja, ist mir einmal passiert" },
-              { value: "very-often", label: "Sehr oft" },
-            ],
-          },
-          {
-            id: "use-calendar",
-            type: "single-choice" as const,
-            question: "Verwendest du Google Calendar oder andere, um wichtige Geschenk‑Termine zu notieren?",
-            options: [
-              { value: "no-never", label: "Nein, nie" },
-              { value: "rarely", label: "Selten" },
-              { value: "once", label: "Ja, aber ich vergesse es trotzdem" },
-              { value: "very-often", label: "Sehr oft" },
-            ],
-          },
+        id: "forgot-gift",
+        title: "Hast du schon einmal vergessen, ein wichtiges Geschenk zu besorgen?",
+        description: "Das passiert uns allen. Schauen wir, wie oft es dir passiert.",
+        options: [
+          { value: "yes-often", label: "Ja, passiert mir oft" },
+          { value: "sometimes", label: "Manchmal" },
+          { value: "rarely", label: "Selten" },
+          { value: "no-never", label: "Nein, nie" },
         ],
       },
       {
