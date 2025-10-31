@@ -6,6 +6,7 @@ import { Container } from "@/components/ui/Container";
 import { QuestionCard } from "@/components/ui/QuestionCard";
 import { questionnaireSteps } from "@/lib/questionnaireData";
 import { Logo } from "@/components/ui/Logo";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface QuestionnaireModalProps {
   isOpen: boolean;
@@ -31,6 +32,7 @@ export const QuestionnaireModal: React.FC<QuestionnaireModalProps> = ({
   const [currentStep, setCurrentStep] = useState(0);
   const [formData, setFormData] = useState<FormData>({});
   const [isComplete, setIsComplete] = useState(false);
+  const { t } = useLanguage();
 
   const step = questionnaireSteps[currentStep];
   const isLastStep = currentStep === questionnaireSteps.length - 1;
@@ -105,11 +107,11 @@ export const QuestionnaireModal: React.FC<QuestionnaireModalProps> = ({
             </div>
             
             <h2 className="font-display text-4xl sm:text-5xl font-bold text-neutral-900 mb-6">
-              THANK YOU!
+              {t.questionnaire.thankYou}
             </h2>
             
             <p className="font-sans text-lg text-neutral-700 mb-8">
-              Your feedback is invaluable to us. We've saved your responses and will use them to make Regalo even better!
+              {t.questionnaire.thankYouMessage}
             </p>
             
             <Button
@@ -118,7 +120,7 @@ export const QuestionnaireModal: React.FC<QuestionnaireModalProps> = ({
               onClick={handleClose}
               data-analytics-id="questionnaire-close"
             >
-              Close
+              {t.questionnaire.close}
             </Button>
           </div>
         </div>
@@ -167,7 +169,7 @@ export const QuestionnaireModal: React.FC<QuestionnaireModalProps> = ({
               ))}
             </div>
             <p className="text-sm text-neutral-500 mt-2">
-              Step {currentStep + 1} of {questionnaireSteps.length}
+              {t.questionnaire.step} {currentStep + 1} {t.questionnaire.of} {questionnaireSteps.length}
             </p>
           </div>
 
@@ -182,7 +184,7 @@ export const QuestionnaireModal: React.FC<QuestionnaireModalProps> = ({
                 
                 {/* Placeholder for visual element */}
                 <div className="bg-neutral-200 rounded-2xl aspect-square flex items-center justify-center">
-                  <span className="text-neutral-400 font-sans text-sm">Visual placeholder</span>
+                  <span className="text-neutral-400 font-sans text-sm">{t.questionnaire.visualPlaceholder}</span>
                 </div>
               </div>
             </div>
@@ -216,7 +218,7 @@ export const QuestionnaireModal: React.FC<QuestionnaireModalProps> = ({
               className={currentStep === 0 ? "opacity-50 cursor-not-allowed" : ""}
               data-analytics-id="questionnaire-back"
             >
-              Back
+              {t.questionnaire.back}
             </Button>
 
             <Button
@@ -225,7 +227,7 @@ export const QuestionnaireModal: React.FC<QuestionnaireModalProps> = ({
               onClick={handleNext}
               data-analytics-id={isLastStep ? "questionnaire-submit" : "questionnaire-next"}
             >
-              {isLastStep ? "Submit" : "Next"}
+              {isLastStep ? t.questionnaire.submit : t.questionnaire.next}
             </Button>
           </div>
         </div>

@@ -1,4 +1,4 @@
-export type Language = 'en' | 'es';
+export type Language = 'en' | 'es' | 'de';
 
 export const translations = {
   en: {
@@ -40,10 +40,15 @@ export const translations = {
       title: "Join the Waitlist",
       subtitle: "Be the first to experience Regalo when we launch!",
       description: "Get early access, exclusive updates, and special perks for being an early supporter.",
+      nameLabel: "Your Name",
       namePlaceholder: "Your name",
+      emailLabel: "Email Address",
       emailPlaceholder: "Your email",
       submit: "Join Waitlist",
       skip: "Maybe later",
+      errorAllFields: "Please fill in all fields",
+      errorInvalidEmail: "Please enter a valid email",
+      errorGeneric: "Something went wrong. Please try again.",
       successTitle: "You're on the list!",
       successMessage: "We'll notify you as soon as Regalo is ready. Get ready for a better way to give gifts!",
       backHome: "Back to Home",
@@ -55,6 +60,11 @@ export const translations = {
       back: "Back",
       next: "Next",
       submit: "Submit",
+      close: "Close",
+      step: "Step",
+      of: "of",
+      about: "About",
+      visualPlaceholder: "Visual placeholder",
       thankYou: "THANK YOU!",
       thankYouMessage: "Your feedback is invaluable to us. We've saved your responses and will use them to make Regalo even better!",
       wantEarlyAccess: "Want to be the first to know when Regalo launches?",
@@ -123,10 +133,15 @@ export const translations = {
       title: "Únete a la Lista de Espera",
       subtitle: "¡Sé el primero en experimentar Regalo cuando lancemos!",
       description: "Obtén acceso anticipado, actualizaciones exclusivas y ventajas especiales por ser uno de los primeros.",
+      nameLabel: "Tu Nombre",
       namePlaceholder: "Tu nombre",
+      emailLabel: "Correo electrónico",
       emailPlaceholder: "Tu email",
       submit: "Unirme a la Lista",
       skip: "Quizás más tarde",
+      errorAllFields: "Por favor completa todos los campos",
+      errorInvalidEmail: "Por favor introduce un email válido",
+      errorGeneric: "Algo salió mal. Inténtalo de nuevo.",
       successTitle: "¡Estás en la lista!",
       successMessage: "Te notificaremos tan pronto como Regalo esté listo. ¡Prepárate para una mejor forma de dar regalos!",
       backHome: "Volver al Inicio",
@@ -138,6 +153,11 @@ export const translations = {
       back: "Atrás",
       next: "Siguiente",
       submit: "Enviar",
+      close: "Cerrar",
+      step: "Paso",
+      of: "de",
+      about: "Acerca de",
+      visualPlaceholder: "Marcador visual",
       thankYou: "¡GRACIAS!",
       thankYouMessage: "Tu feedback es invaluable para nosotros. Hemos guardado tus respuestas y las usaremos para hacer Regalo aún mejor!",
       wantEarlyAccess: "¿Quieres ser el primero en saber cuándo Regalo lance?",
@@ -164,6 +184,99 @@ export const translations = {
     privacy: {
       title: "Política de Privacidad",
       lastUpdated: "Última actualización:",
+    },
+  },
+  
+  de: {
+    // Hero
+    hero: {
+      title: "Regalo ist eine mobile App, um deine Geschenke im Blick zu behalten",
+      discoverMore: "Mehr entdecken",
+      joinWaitlist: "Warteliste beitreten",
+    },
+    
+    // Features
+    features: {
+      title: "Funktionen",
+      feature1: {
+        title: "Niemals vergessen",
+        description: "Behalte wichtige Daten im Blick und verpasse keinen besonderen Anlass mehr",
+      },
+      feature2: {
+        title: "Vorlieben kennen",
+        description: "Speichere Geschenkvorlieben und -ideen für deine Liebsten",
+      },
+      feature3: {
+        title: "Organisiert bleiben",
+        description: "Verwalte all deine Geschenke an einem Ort – mit Erinnerungen",
+      },
+    },
+    
+    // CTA Section
+    cta: {
+      intro: "Um dir die App vorzustellen, haben wir einen",
+      interactiveQuestionnaire: "interaktiven Fragebogen",
+      outro: "Während wir sie erklären, kannst du mit deinem Feedback mithelfen :)",
+      wantToParticipate: "Möchtest du mitmachen?",
+      letsGo: "Ja! Los geht’s 💪",
+    },
+    
+    // Waitlist
+    waitlist: {
+      title: "Tritt der Warteliste bei",
+      subtitle: "Sei der Erste, der Regalo beim Launch erlebt!",
+      description: "Erhalte Vorabzugang, exklusive Updates und besondere Vorteile als Early Supporter.",
+      nameLabel: "Dein Name",
+      namePlaceholder: "Dein Name",
+      emailLabel: "E‑Mail‑Adresse",
+      emailPlaceholder: "Deine E-Mail",
+      submit: "Warteliste beitreten",
+      skip: "Vielleicht später",
+      errorAllFields: "Bitte fülle alle Felder aus",
+      errorInvalidEmail: "Bitte gib eine gültige E‑Mail ein",
+      errorGeneric: "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
+      successTitle: "Du stehst auf der Liste!",
+      successMessage: "Wir benachrichtigen dich, sobald Regalo bereit ist. Freu dich auf eine bessere Art zu schenken!",
+      backHome: "Zur Startseite",
+    },
+    
+    // Questionnaire
+    questionnaire: {
+      exit: "Beenden",
+      back: "Zurück",
+      next: "Weiter",
+      submit: "Senden",
+      close: "Schließen",
+      step: "Schritt",
+      of: "von",
+      about: "Über",
+      visualPlaceholder: "Platzhalter für Visual",
+      thankYou: "DANKE!",
+      thankYouMessage: "Dein Feedback ist für uns enorm wertvoll. Wir haben deine Antworten gespeichert und nutzen sie, um Regalo noch besser zu machen!",
+      wantEarlyAccess: "Möchtest du als Erste:r erfahren, wenn Regalo startet?",
+      joinWaitlistCta: "Warteliste beitreten 🎉",
+      maybeLater: "Vielleicht später, zurück zur Startseite",
+    },
+    
+    // Footer
+    footer: {
+      privacyPolicy: "Datenschutzerklärung",
+      copyright: "Alle Rechte vorbehalten.",
+      language: "Sprache",
+    },
+    
+    // Cookie Banner
+    cookies: {
+      message: "Wir verwenden Cookies und ähnliche Technologien, um den Website‑Verkehr zu analysieren und deine Erfahrung zu verbessern. Mit Klick auf \"Akzeptieren\" stimmst du der Nutzung zu.",
+      learnMore: "Mehr erfahren",
+      accept: "Akzeptieren",
+      decline: "Ablehnen",
+    },
+    
+    // Privacy Policy
+    privacy: {
+      title: "Datenschutzerklärung",
+      lastUpdated: "Zuletzt aktualisiert:",
     },
   },
 };

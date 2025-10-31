@@ -356,7 +356,7 @@ export default function QuestionnairePage() {
                 ) : (
                   <div className="rounded-2xl w-full aspect-[16/9] flex items-center justify-center">
                     <span className="text-neutral-400 font-sans text-xs lg:text-sm">
-                      Visual placeholder
+                      {t.questionnaire.visualPlaceholder}
                     </span>
                   </div>
                 )}
@@ -374,7 +374,7 @@ export default function QuestionnairePage() {
               <div className="rounded-3xl border border-neutral-200 bg-white p-4 sm:p-5 lg:p-6 shadow-sm">
                 {/* Section Title */}
                 <h2 className="font-display text-xl sm:text-2xl lg:text-3xl font-semibold text-neutral-900 mb-4 lg:mb-6">
-                  About {step.title}
+                  {t.questionnaire.about} {step.title}
                 </h2>
 
                 <div className="space-y-4 lg:space-y-6">

@@ -26,12 +26,12 @@ export const WaitlistForm: React.FC<WaitlistFormProps> = ({ onSubmit, onSkip }) 
 
     // Validation
     if (!email || !name) {
-      setError("Please fill in all fields");
+      setError(t.waitlist.errorAllFields);
       return;
     }
 
     if (!email.includes("@")) {
-      setError("Please enter a valid email");
+      setError(t.waitlist.errorInvalidEmail);
       return;
     }
 
@@ -40,7 +40,7 @@ export const WaitlistForm: React.FC<WaitlistFormProps> = ({ onSubmit, onSkip }) 
     try {
       await onSubmit(email, name);
     } catch (err) {
-      setError("Something went wrong. Please try again.");
+      setError(t.waitlist.errorGeneric);
       setIsSubmitting(false);
     }
   };
@@ -54,7 +54,7 @@ export const WaitlistForm: React.FC<WaitlistFormProps> = ({ onSubmit, onSkip }) 
             htmlFor="name"
             className="block font-sans text-sm font-medium text-neutral-700 mb-2"
           >
-            Your Name
+            {t.waitlist.nameLabel}
           </label>
           <input
             type="text"
@@ -74,7 +74,7 @@ export const WaitlistForm: React.FC<WaitlistFormProps> = ({ onSubmit, onSkip }) 
             htmlFor="email"
             className="block font-sans text-sm font-medium text-neutral-700 mb-2"
           >
-            Email Address
+            {t.waitlist.emailLabel}
           </label>
           <input
             type="email"

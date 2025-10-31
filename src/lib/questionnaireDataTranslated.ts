@@ -2,6 +2,173 @@ import { Language } from './translations';
 import { QuestionnaireStep } from './questionnaireData';
 
 export function getTranslatedQuestionnaireSteps(language: Language): QuestionnaireStep[] {
+  if (language === 'de') {
+    return [
+      {
+        id: "calendar",
+        title: "Kalender",
+        description: "Die Idee entstand, weil viele von uns oft wichtige Daten vergessen, z. B. den Geburtstag eines Familienmitglieds. Deshalb wird es in der App einen Kalender genau dafür geben!",
+        icon: "calendar",
+        questions: [
+          {
+            id: "forgot-gift",
+            type: "single-choice",
+            question: "Unter uns: Hast du schon einmal vergessen, ein wichtiges Geschenk zu besorgen – oder es in letzter Minute gekauft?",
+            options: [
+              { label: "Nein, nie", value: "no-never" },
+              { label: "Selten", value: "rarely" },
+              { label: "Ja, ist mir einmal passiert", value: "once" },
+              { label: "Sehr oft", value: "very-often" },
+            ],
+          },
+          {
+            id: "use-calendar",
+            type: "single-choice",
+            question: "Verwendest du Google Calendar oder andere, um wichtige Geschenk‑Termine zu notieren?",
+            options: [
+              { label: "Nein, nie", value: "no-never" },
+              { label: "Selten", value: "rarely" },
+              { label: "Ja, aber ich vergesse es trotzdem", value: "once" },
+              { label: "Sehr oft", value: "very-often" },
+            ],
+          },
+        ],
+      },
+      {
+        id: "profile",
+        title: "Profil",
+        description: "Du kannst auch dein Profil erstellen. Die Idee ist, nur Avatare zu verwenden. Du kannst angeben, was du magst, deine Größen und welche Bücher du bereits gelesen hast, damit man sie dir nicht noch einmal schenkt ;) Außerdem kannst du die Profile anderer sehen.",
+        icon: "profile",
+        questions: [
+          {
+            id: "profile-useful",
+            type: "single-choice",
+            question: "Findest du das nützlich?",
+            options: [
+              { label: "Ich würde es nicht nutzen", value: "no-use" },
+              { label: "Könnte ich ausprobieren", value: "could-try" },
+              { label: "Ja, ich würde es nutzen", value: "yes-use" },
+              { label: "Super!", value: "awesome" },
+            ],
+          },
+          {
+            id: "profile-data",
+            type: "combined",
+            question: "Würdest du noch weitere Angaben im Profil aufnehmen?",
+            options: [
+              { label: "Nein, das reicht", value: "no-enough" },
+              { label: "Bereich ‚Schenke mir bitte nicht…‘", value: "dont-give" },
+              { label: "Hobbys", value: "hobbies" },
+            ],
+            hasTextInput: true,
+            placeholder: "Deine Antwort…",
+          },
+          {
+            id: "never-share",
+            type: "combined",
+            question: "Gibt es etwas, das du niemals teilen würdest?",
+            options: [
+              { label: "Mein echtes Alter", value: "age" },
+              { label: "Meine Lieblingsfarbe", value: "color" },
+              { label: "Ich habe keine Geheimnisse", value: "no-secrets" },
+            ],
+            hasTextInput: true,
+            placeholder: "Deine Antwort…",
+          },
+        ],
+      },
+      {
+        id: "access",
+        title: "Profilzugriff",
+        description: "Du kannst dein Profil ganz einfach per QR‑Code oder Link teilen. Wenn du später jemanden aus der Liste entfernen möchtest, ist das kein Problem.",
+        icon: "access",
+        questions: [
+          {
+            id: "share-with",
+            type: "multiple-choice",
+            question: "Mit wem würdest du dein Profil teilen wollen?",
+            options: [
+              { label: "Arbeitskolleg:innen", value: "work" },
+              { label: "Familie", value: "family" },
+              { label: "Freund:innen", value: "friends" },
+              { label: "Bekannte", value: "acquaintances" },
+              { label: "Fremde", value: "strangers" },
+            ],
+          },
+          {
+            id: "qr-card",
+            type: "single-choice",
+            question: "Würdest du den QR‑Code deines Profils auf eine Geschenkkarte drucken?",
+            options: [
+              { label: "Ich glaube nicht", value: "no" },
+              { label: "Vielleicht", value: "maybe" },
+              { label: "Ja, auf jeden Fall!", value: "yes" },
+            ],
+          },
+        ],
+      },
+      {
+        id: "reminders",
+        title: "Erinnerungen",
+        description: "Du siehst alle wichtigen Daten im Kalender und kannst außerdem wählen, wann die App dich an diese Ereignisse erinnert.",
+        icon: "reminders",
+        questions: [
+          {
+            id: "reminder-time",
+            type: "multiple-choice",
+            question: "Wie viel Vorlaufzeit hättest du gern für Erinnerungen? (alle zutreffenden auswählen)",
+            options: [
+              { label: "1 Monat", value: "1-month" },
+              { label: "15 Tage", value: "15-days" },
+              { label: "1 Woche", value: "1-week" },
+              { label: "3 Tage", value: "3-days" },
+              { label: "1 Tag", value: "1-day" },
+              { label: "Benutzerdefiniert", value: "custom" },
+            ],
+          },
+        ],
+      },
+      {
+        id: "share",
+        title: "Nächste Schritte",
+        description: "Super! Jetzt kennst du die App viel besser! In Zukunft möchten wir außerdem Gruppen zum Organisieren von Geschenken ermöglichen. Aber später mehr dazu. Fürs Erste kannst du dich in unsere Warteliste eintragen.",
+        icon: "share",
+        questions: [
+          {
+            id: "overall-opinion",
+            type: "single-choice",
+            question: "Wie findest du die Regalo‑App insgesamt?",
+            options: [
+              { label: "Nicht sehr hilfreich", value: "not-useful" },
+              { label: "Ganz gut", value: "good" },
+              { label: "Sehr nützlich, ich würde sie nutzen!", value: "very-useful" },
+              { label: "Ich brauche sie", value: "need-it" },
+            ],
+          },
+          {
+            id: "improvement-ideas",
+            type: "combined",
+            question: "Hast du Ideen, wie wir die App verbessern können?",
+            options: [
+              { label: "Mir fällt gerade nichts ein", value: "nothing" },
+            ],
+            hasTextInput: true,
+            placeholder: "Deine Vorschläge…",
+          },
+          {
+            id: "share-with-others",
+            type: "single-choice",
+            question: "Würdest du die App mit deinen Liebsten teilen?",
+            options: [
+              { label: "Ich glaube nicht", value: "no" },
+              { label: "Vielleicht", value: "maybe" },
+              { label: "Ja, auf jeden Fall!", value: "yes" },
+            ],
+          },
+        ],
+      },
+    ];
+  }
   if (language === 'es') {
     return [
       {

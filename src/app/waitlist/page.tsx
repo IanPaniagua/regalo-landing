@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/Button";
 import { WaitlistForm } from "@/components/ui/WaitlistForm";
 import { saveWaitlistSignup } from "@/lib/firestoreService";
 import { trackWaitlistView, trackWaitlistSignup, trackWaitlistSkip } from "@/lib/analytics";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 /**
  * Waitlist standalone page
@@ -16,6 +17,7 @@ import { trackWaitlistView, trackWaitlistSignup, trackWaitlistSkip } from "@/lib
 export default function WaitlistPage() {
   const router = useRouter();
   const [isJoined, setIsJoined] = useState(false);
+  const { t } = useLanguage();
 
   useEffect(() => {
     trackWaitlistView('landing');
@@ -47,15 +49,15 @@ export default function WaitlistPage() {
           {!isJoined ? (
             <>
               <h1 className="font-display text-5xl sm:text-6xl font-bold text-neutral-900 mb-6">
-                Join the Waitlist
+                {t.waitlist.title}
               </h1>
 
               <p className="font-sans text-xl text-neutral-700 mb-4 leading-relaxed">
-                Be the first to experience Regalo when we launch!
+                {t.waitlist.subtitle}
               </p>
 
               <p className="font-sans text-lg text-neutral-600 mb-12">
-                Get early access, exclusive updates, and special perks for being an early supporter.
+                {t.waitlist.description}
               </p>
 
               <WaitlistForm onSubmit={handleSubmit} onSkip={handleSkip} />
@@ -67,11 +69,11 @@ export default function WaitlistPage() {
               </div>
 
               <h1 className="font-display text-5xl sm:text-6xl font-bold text-neutral-900 mb-6">
-                You're on the list!
+                {t.waitlist.successTitle}
               </h1>
 
               <p className="font-sans text-xl text-neutral-700 mb-8 leading-relaxed">
-                We'll notify you as soon as Regalo is ready. Get ready for a better way to give gifts!
+                {t.waitlist.successMessage}
               </p>
 
               <Button
@@ -80,7 +82,7 @@ export default function WaitlistPage() {
                 onClick={handleGoHome}
                 data-analytics-id="waitlist-joined-home"
               >
-                Back to Home
+                {t.waitlist.backHome}
               </Button>
             </>
           )}

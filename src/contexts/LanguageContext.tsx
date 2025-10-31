@@ -17,12 +17,16 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   // Load language from localStorage on mount
   useEffect(() => {
     const savedLanguage = localStorage.getItem('regalo_language') as Language;
-    if (savedLanguage && (savedLanguage === 'en' || savedLanguage === 'es')) {
+    if (savedLanguage && (savedLanguage === 'en' || savedLanguage === 'es' || savedLanguage === 'de')) {
       setLanguageState(savedLanguage);
     } else {
       // Detect browser language
       const browserLang = navigator.language.toLowerCase();
-      const detectedLang = browserLang.startsWith('es') ? 'es' : 'en';
+      const detectedLang = browserLang.startsWith('es')
+        ? 'es'
+        : browserLang.startsWith('de')
+        ? 'de'
+        : 'en';
       setLanguageState(detectedLang);
       
       // Log detection for debugging

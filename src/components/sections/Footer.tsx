@@ -55,6 +55,17 @@ export const Footer: React.FC = () => {
               >
                 ES
               </button>
+              <button
+                onClick={() => setLanguage('de')}
+                className={`px-2 py-1 rounded transition-colors ${
+                  language === 'de'
+                    ? 'bg-secondary-gold text-white font-semibold'
+                    : 'hover:text-neutral-900'
+                }`}
+                data-analytics-id="footer-lang-de"
+              >
+                DE
+              </button>
             </div>
           </div>
           
