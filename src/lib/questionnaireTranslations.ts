@@ -312,6 +312,171 @@ export const questionnaireTranslations = {
       },
     ],
   },
+  de: {
+    steps: [
+      {
+        id: "calendar",
+        title: "Kalender",
+        description: "Die Idee entstand, weil viele von uns oft wichtige Daten vergessen, z. B. den Geburtstag eines Familienmitglieds. Deshalb wird es in der App einen Kalender genau dafür geben!",
+        icon: "calendar" as const,
+        questions: [
+          {
+            id: "forgot-gift",
+            type: "single-choice" as const,
+            question: "Unter uns: Hast du schon einmal vergessen, ein wichtiges Geschenk zu besorgen – oder es in letzter Minute gekauft?",
+            options: [
+              { value: "no-never", label: "Nein, nie" },
+              { value: "rarely", label: "Selten" },
+              { value: "once", label: "Ja, ist mir einmal passiert" },
+              { value: "very-often", label: "Sehr oft" },
+            ],
+          },
+          {
+            id: "use-calendar",
+            type: "single-choice" as const,
+            question: "Verwendest du Google Calendar oder andere, um wichtige Geschenk‑Termine zu notieren?",
+            options: [
+              { value: "no-never", label: "Nein, nie" },
+              { value: "rarely", label: "Selten" },
+              { value: "once", label: "Ja, aber ich vergesse es trotzdem" },
+              { value: "very-often", label: "Sehr oft" },
+            ],
+          },
+        ],
+      },
+      {
+        id: "use-calendar",
+        title: "Verwendest du einen Kalender oder Erinnerungen für wichtige Daten?",
+        description: "Wie behältst du derzeit besondere Anlässe im Blick?",
+        options: [
+          { value: "always", label: "Ja, immer" },
+          { value: "often", label: "Oft" },
+          { value: "once", label: "Manchmal" },
+          { value: "never", label: "Nie" },
+        ],
+      },
+      {
+        id: "reminder-time",
+        title: "Wann möchtest du an ein bevorstehendes Datum erinnert werden?",
+        description: "Wähle alle zutreffenden aus",
+        options: [
+          { value: "1-week", label: "1 Woche vorher" },
+          { value: "3-days", label: "3 Tage vorher" },
+          { value: "1-day", label: "1 Tag vorher" },
+          { value: "same-day", label: "Am selben Tag" },
+        ],
+        multiple: true,
+      },
+      {
+        id: "profile-useful",
+        title: "Wäre ein Profil mit Geschenkvorlieben für jede Person nützlich?",
+        description: "Stell dir vor, du hättest einen Ort, um zu speichern, was jede Person mag",
+        options: [
+          { value: "yes-use", label: "Ja, ich würde es definitiv nutzen" },
+          { value: "maybe", label: "Vielleicht" },
+          { value: "not-sure", label: "Ich bin mir nicht sicher" },
+          { value: "no", label: "Nein" },
+        ],
+      },
+      {
+        id: "profile-data",
+        title: "Welche Informationen möchtest du in jedem Profil speichern?",
+        description: "Wähle alle zutreffenden aus",
+        options: [
+          { value: "preferences", label: "Geschenkvorlieben" },
+          { value: "sizes", label: "Kleidergrößen" },
+          { value: "interests", label: "Hobbys und Interessen" },
+          { value: "no-gifts", label: "Dinge, die sie nicht mögen" },
+          { value: "budget", label: "Budgetbereich" },
+          { value: "history", label: "Geschenkverlauf" },
+        ],
+        multiple: true,
+        textInput: {
+          placeholder: "Andere Informationen, die du speichern möchtest...",
+          label: "Andere",
+        },
+      },
+      {
+        id: "share-with",
+        title: "Für wen möchtest du Geschenke organisieren?",
+        description: "Wähle alle zutreffenden aus",
+        options: [
+          { value: "family", label: "Familie" },
+          { value: "friends", label: "Freunde" },
+          { value: "partner", label: "Partner" },
+          { value: "colleagues", label: "Kollegen" },
+          { value: "acquaintances", label: "Bekannte" },
+        ],
+        multiple: true,
+      },
+      {
+        id: "share-with-others",
+        title: "Würdest du Geschenkideen mit anderen teilen?",
+        description: "Zum Beispiel, Geschenke mit Familienmitgliedern koordinieren",
+        options: [
+          { value: "yes", label: "Ja, definitiv" },
+          { value: "maybe", label: "Vielleicht" },
+          { value: "no", label: "Nein" },
+        ],
+      },
+      {
+        id: "qr-card",
+        title: "Würdest du eine physische Karte mit QR-Code verwenden, um dein Profil zu teilen?",
+        description: "Andere könnten ihn scannen, um deine Geschenkvorlieben zu sehen",
+        options: [
+          { value: "yes", label: "Ja, klingt interessant" },
+          { value: "maybe", label: "Vielleicht" },
+          { value: "no", label: "Nein" },
+        ],
+      },
+      {
+        id: "never-share",
+        title: "Was möchtest du NIEMALS als Geschenk erhalten?",
+        description: "Dies hilft anderen, unerwünschte Geschenke zu vermeiden",
+        options: [
+          { value: "clothing", label: "Kleidung" },
+          { value: "perfume", label: "Parfüm/Eau de Cologne" },
+          { value: "books", label: "Bücher" },
+          { value: "tech", label: "Technologie" },
+          { value: "food", label: "Essen/Getränke" },
+          { value: "decor", label: "Wohndekoration" },
+        ],
+        multiple: true,
+        textInput: {
+          placeholder: "Andere Dinge, die du nie möchtest...",
+          label: "Andere",
+        },
+      },
+      {
+        id: "overall-opinion",
+        title: "Insgesamt, wie findest du diese App-Idee?",
+        description: "Deine ehrliche Meinung hilft uns, besser zu werden",
+        options: [
+          { value: "love-it", label: "Ich liebe es! 😍" },
+          { value: "need-it", label: "Ich brauche das" },
+          { value: "interesting", label: "Interessant" },
+          { value: "not-sure", label: "Nicht sicher" },
+          { value: "not-for-me", label: "Nicht für mich" },
+        ],
+      },
+      {
+        id: "improvement-ideas",
+        title: "Hast du Ideen, um Regalo zu verbessern?",
+        description: "Wir würden gerne deine Vorschläge hören",
+        options: [
+          { value: "perfect", label: "Es ist perfekt so wie es ist" },
+          { value: "add-features", label: "Mehr Funktionen hinzufügen" },
+          { value: "simpler", label: "Einfacher machen" },
+          { value: "nothing", label: "Keine Vorschläge" },
+        ],
+        textInput: {
+          placeholder: "Teile deine Ideen hier...",
+          label: "Deine Vorschläge",
+          required: false,
+        },
+      },
+    ],
+  },
 };
 
 export function getQuestionnaireSteps(language: Language) {
