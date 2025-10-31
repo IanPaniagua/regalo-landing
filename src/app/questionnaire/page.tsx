@@ -22,6 +22,7 @@ import {
 import { saveQuestionnaireToFirestore, calculateFeatureScores, saveWaitlistSignup } from "@/lib/firestoreService";
 import { WaitlistForm } from "@/components/ui/WaitlistForm";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { trackMetaCompleteRegistration, trackMetaLead } from "@/lib/metaPixel";
 
 interface FormData {
   [key: string]: {
@@ -112,6 +113,9 @@ export default function QuestionnairePage() {
       // Track completion
       trackQuestionnaireComplete(timeSpent);
       
+      // Track Meta Pixel CompleteRegistration event
+      trackMetaCompleteRegistration(timeSpent);
+      
       // Calculate feature scores
       const scores = calculateFeatureScores(formData);
       
@@ -147,6 +151,9 @@ export default function QuestionnairePage() {
     
     // Track signup
     trackWaitlistSignup('questionnaire');
+    
+    // Track Meta Pixel Lead event
+    trackMetaLead('questionnaire');
     
     // Update state
     setWaitlistJoined(true);

@@ -1,0 +1,35 @@
+Especificaciones de los eventos estándar del píxel de Meta
+
+Puedes hablar con un Meta Technical Pro para obtener instrucciones paso a paso sobre cómo implementar eventos estándar para tu píxel de Meta. Descubre cómo programar una llamada con un Meta Pro.
+Los eventos son las acciones que las personas realizan en tu sitio web. Meta define previamente los eventos estándar, que permiten registrar las conversiones, optimizarlas y crear públicos. A continuación, se incluye una lista de eventos estándar del píxel de Meta. Para obtener una lista completa de eventos estándar y sus parámetros, visita nuestro sitio de Meta for Developers.
+
+Eventos estándar
+Acción en el sitio web	Descripción	Código del evento estándar
+Agregar información de pago	Inclusión de la información de pago del cliente durante el proceso de pago (por ejemplo, cuando una persona hace clic en un botón para guardar la información de facturación).	fbq('track', 'AddPaymentInfo');
+Agregar al carrito	Inclusión de un artículo a un carrito de compras (por ejemplo, hacer clic en el botón "Agregar al carrito" de un sitio web).	fbq('track', 'AddToCart');
+Agregar a la lista de deseos	Inclusión de artículos en una lista de deseos (por ejemplo, hacer clic en un botón "Agregar a la lista de deseos" de un sitio web).	fbq('track', 'AddToWishlist');
+Completar registro	Envío de información para recibir un servicio que brinda tu negocio (por ejemplo, registrarse para una suscripción por correo electrónico).	fbq('track', 'CompleteRegistration');
+Contactar	Comunicación entre un cliente y tu negocio por teléfono, SMS, correo electrónico, chat u otros medios.	fbq('track', 'Contact');
+Personalizar producto	Personalización de productos a través de una herramienta de configuración u otra app que sea propiedad de tu empresa.	fbq('track', 'CustomizeProduct');
+Hacer donación	Donación de fondos a tu organización o causa.	fbq('track', 'Donate');
+Buscar ubicación	Cuando una persona busca una de tus ubicaciones físicas en internet con la intención de visitarla (por ejemplo, buscar un producto y encontrarlo en una de tus tiendas locales).	fbq('track', 'FindLocation');
+Iniciar pago	Inicio de un proceso de pago. (por ejemplo, hacer clic en un botón de pago).	fbq('track', 'InitiateCheckout');
+Cliente potencial	Envío de información por parte de un cliente que sabe que tu negocio puede ponerse en contacto con él más adelante (por ejemplo, enviar un formulario o registrarse para una prueba).	fbq('track', 'Lead');
+Comprar	Finalización de una compra, normalmente representada por la recepción de un pedido o una confirmación de compra, o por un recibo de transacción (por ejemplo, llegar a una página de agradecimiento o de confirmación).	fbq('track', 'Purchase', {value: 0.00, currency: 'USD'});
+Programar	Reserva de una cita para visitar una de tus ubicaciones.	fbq('track', 'Schedule');
+Buscar	Búsquedas en tu sitio web, app u otra propiedad (por ejemplo, búsquedas de productos o viajes).	fbq('track', 'Search');
+Iniciar prueba	Registro del inicio de una prueba gratuita de un producto o servicio que ofreces (por ejemplo, suscripción de prueba).	fbq('track', 'StartTrial', {value: '0.00', currency: 'USD', predicted_ltv: '0.00'});
+Enviar solicitud	Envío de una solicitud de un producto, servicio o programa que ofreces (por ejemplo, tarjeta de crédito, programa educativo o empleo).	fbq('track', 'SubmitApplication');
+Suscribirse	Inicio de una suscripción de pago a un producto o servicio que ofreces.	fbq('track', 'Subscribe', {value: '0.00', currency: 'USD', predicted_ltv: '0.00'});
+Ver contenido	Una visita a una página web que te interesa. Por ejemplo, la página de un producto o una página de destino. "Ver contenido" te informa si alguien visita la URL de una página web, pero no especifica qué hace o qué mira esa persona en la página web.	fbq('track', 'ViewContent');
+Nota: Se incluye el evento de visita a la página como parte del código base de tu píxel. La visita a la página indica cuándo alguien accede a una página web que tiene el código base del píxel instalado.
+
+Ejemplo de un evento estándar
+A continuación, te mostramos un ejemplo de cómo se ve el código de un sitio web con eventos estándar instalados:
+
+Diagram showing the implementation of a Meta Pixel standard event in website code.
+El código original de tu sitio web: pega el código del píxel de Meta entre las etiquetas <head> y </head> de tu página web. Es posible que ya tengas código entre las etiquetas de encabezado. En ese caso, coloca el código del píxel debajo de ese código, pero antes de </head>.
+El código base del píxel de Meta: el aspecto del código del píxel de Meta será similar al del diagrama anterior, excepto que el identificador del píxel no será 1234567890.
+El código del evento estándar: en el código del píxel de Meta, pega el código del evento estándar relevante para tu página sobre la etiqueta </script> (por ejemplo, el de "Agregar al carrito"). Tendrás que hacerlo en cada página en la que quieras realizar un seguimiento.
+En este caso, la clave es que todas las páginas del sitio web deben tener todo lo que aparece delimitado en la sección 2 (código base), pero el fragmento de código de la sección 3 (código de evento estándar) variará en función de la página.
+

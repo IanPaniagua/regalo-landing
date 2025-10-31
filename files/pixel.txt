@@ -1,0 +1,29 @@
+Ian Manuel Paniagua Porroa Te enviamos instrucciones para instalar el píxel de Facebook en un sitio web. Tu organización usa el píxel de Facebook para registrar la actividad del sitio web y poner en circulación anuncios en función de esa actividad.
+
+Debes instalar dos tipos de fragmentos de código en el sitio web. Esto incluye el código base del píxel en todas las páginas del sitio web y el código de evento en páginas web concretas.
+
+1
+Identificador del píxel de Facebook
+Tu identificador del píxel es el número asignado exclusivamente a tu píxel de Facebook. Puedes utilizar este número en el código base del píxel.
+
+Identificador del píxel: 1528497405010554
+2
+Instala el código base del píxel
+El código base del píxel registra la actividad de tu sitio web, lo que te sirve de base para medir eventos específicos. Copia el código base que figura a continuación y pégalo entre las etiquetas de encabezado en cada página del sitio web:
+
+<!-- Facebook Pixel Code --><script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js'); fbq('init', '1528497405010554'); fbq('track', 'PageView');</script><noscript> <img height="1" width="1" src="https://www.facebook.com/tr?id=1528497405010554&ev=PageView&noscript=1"/></noscript><!-- End Facebook Pixel Code -->
+También puedes activar las coincidencias de datos para que se use información de tu píxel con el fin de buscar coincidencias entre acciones del sitio web y personas en Facebook. De este modo, puedes aumentar la efectividad de los informes de conversiones, la optimización de anuncios y la segmentación. Más información.
+
+3
+Instala el código de evento
+El código de evento permite a tu organización registrar acciones concretas y usarlas en tu publicidad. Debes instalar el código de evento en las páginas concretas de tu sitio web donde se realizarán las acciones.
+
+Puedes utilizar los nueve eventos estándar predefinidos por Facebook con el fin de registrar tus anuncios y optimizarlos para aumentar el número de conversiones. Para medir los anuncios y optimizarlos con el fin de obtener acciones más concretas, puedes agregar parámetros a los eventos utilizando las opciones de instalación recomendadas o avanzadas para tus etiquetas de evento. También puedes crear eventos personalizados dirigidos a las acciones importantes para tu negocio que definas. Hay tres opciones de configuración de implementación: básica, recomendada y avanzada.
+
+Obtener el código de evento para las conversiones
+4
+Comprueba el estado del píxel
+Ve al administrador de anuncios de Facebook y selecciona Píxeles en el menú superior. Si el estado del píxel es Activo, significa que se instaló correctamente. El estado del píxel puede tardar hasta 20 minutos en cambiar tras su instalación.
+
+Si el estado del píxel muestra Aún no hay actividad, significa que no está funcionando. Descarga el asistente para píxeles para obtener más información u obtener orientación sobre cómo instalar el píxel.
+

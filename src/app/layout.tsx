@@ -3,6 +3,7 @@ import { Cormorant_Garamond, Inter } from "next/font/google";
 import "./globals.css";
 import { CookieBanner } from "@/components/ui/CookieBanner";
 import { LanguageProvider } from "@/contexts/LanguageContext";
+import { MetaPixelInit } from "@/components/MetaPixelInit";
 
 /**
  * Cormorant Garamond - Luxury display font with a playful touch
@@ -48,6 +49,7 @@ export default function RootLayout({
         <LanguageProvider>
           {children}
           <CookieBanner />
+          <MetaPixelInit />
         </LanguageProvider>
       </body>
     </html>

@@ -9,6 +9,7 @@ import { WaitlistForm } from "@/components/ui/WaitlistForm";
 import { saveWaitlistSignup } from "@/lib/firestoreService";
 import { trackWaitlistView, trackWaitlistSignup, trackWaitlistSkip } from "@/lib/analytics";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { trackMetaLead } from "@/lib/metaPixel";
 
 /**
  * Waitlist standalone page
@@ -26,6 +27,10 @@ export default function WaitlistPage() {
   const handleSubmit = async (email: string, name: string) => {
     await saveWaitlistSignup(email, name, 'landing');
     trackWaitlistSignup('landing');
+    
+    // Track Meta Pixel Lead event
+    trackMetaLead('landing');
+    
     setIsJoined(true);
   };
 
