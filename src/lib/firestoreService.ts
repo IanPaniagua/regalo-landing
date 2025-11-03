@@ -1,5 +1,5 @@
 import { firestore } from './firebase';
-import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { collection, addDoc, serverTimestamp, getDocs, query, orderBy, limit } from 'firebase/firestore';
 import { QuestionnaireResponse } from './questionnaireStorage';
 
 /**
@@ -20,6 +20,10 @@ export const saveQuestionnaireToFirestore = async (
   }
 
   try {
+    const isDevelopment = process.env.NODE_ENV === 'development' || 
+                         window.location.hostname === 'localhost' ||
+                         window.location.hostname === '127.0.0.1';
+    
     const docRef = await addDoc(collection(firestore, 'questionnaire_responses'), {
       responses,
       metadata: {
@@ -29,6 +33,8 @@ export const saveQuestionnaireToFirestore = async (
         screenResolution: `${window.screen.width}x${window.screen.height}`,
         referrer: document.referrer || 'direct',
         viewport: `${window.innerWidth}x${window.innerHeight}`,
+        environment: isDevelopment ? 'development' : 'production',
+        hostname: window.location.hostname,
       },
       timestamp: serverTimestamp(),
       createdAt: new Date().toISOString(),
@@ -171,4 +177,72 @@ export const calculateFeatureScores = (responses: QuestionnaireResponse): Record
   }
 
   return scores;
+};
+
+/**
+ * Fetch all questionnaire responses from Firestore
+ * Used for dashboard analytics
+ */
+export const fetchQuestionnaireResponses = async (maxResults: number = 100) => {
+  if (!firestore) {
+    console.warn('Firestore not available');
+    return [];
+  }
+
+  try {
+    const q = query(
+      collection(firestore, 'questionnaire_responses'),
+      orderBy('createdAt', 'desc'),
+      limit(maxResults)
+    );
+    
+    const querySnapshot = await getDocs(q);
+    const responses: any[] = [];
+    
+    querySnapshot.forEach((doc) => {
+      responses.push({
+        id: doc.id,
+        ...doc.data(),
+      });
+    });
+    
+    return responses;
+  } catch (error) {
+    console.error('Error fetching questionnaire responses:', error);
+    return [];
+  }
+};
+
+/**
+ * Fetch all waitlist signups from Firestore
+ * Used for dashboard analytics
+ */
+export const fetchWaitlistSignups = async (maxResults: number = 100) => {
+  if (!firestore) {
+    console.warn('Firestore not available');
+    return [];
+  }
+
+  try {
+    const q = query(
+      collection(firestore, 'waitlist_signups'),
+      orderBy('createdAt', 'desc'),
+      limit(maxResults)
+    );
+    
+    const querySnapshot = await getDocs(q);
+    const signups: any[] = [];
+    
+    querySnapshot.forEach((doc) => {
+      signups.push({
+        id: doc.id,
+        ...doc.data(),
+      });
+    });
+    
+    return signups;
+  } catch (error) {
+    console.error('Error fetching waitlist signups:', error);
+    return [];
+  }
 };
