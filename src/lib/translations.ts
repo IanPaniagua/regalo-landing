@@ -75,6 +75,7 @@ export const translations = {
     // Footer
     footer: {
       privacyPolicy: "Privacy Policy",
+      appPrivacyPolicy: "App Privacy Policy",
       copyright: "All rights reserved.",
       language: "Language",
     },
@@ -168,6 +169,7 @@ export const translations = {
     // Footer
     footer: {
       privacyPolicy: "Política de Privacidad",
+      appPrivacyPolicy: "Política de Privacidad App",
       copyright: "Todos los derechos reservados.",
       language: "Idioma",
     },
@@ -261,6 +263,7 @@ export const translations = {
     // Footer
     footer: {
       privacyPolicy: "Datenschutzerklärung",
+      appPrivacyPolicy: "App-Datenschutzerklärung",
       copyright: "Alle Rechte vorbehalten.",
       language: "Sprache",
     },

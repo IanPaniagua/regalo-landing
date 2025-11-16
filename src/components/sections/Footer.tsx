@@ -27,6 +27,16 @@ export const Footer: React.FC = () => {
             >
               {t.footer.privacyPolicy}
             </Link>
+
+            <span className="text-neutral-400">|</span>
+
+            <Link 
+              href="/privacy-policy-app" 
+              className="hover:text-neutral-900 transition-colors"
+              data-analytics-id="footer-privacy-policy-app"
+            >
+              {t.footer.appPrivacyPolicy}
+            </Link>
             
             <span className="text-neutral-400">|</span>
             
