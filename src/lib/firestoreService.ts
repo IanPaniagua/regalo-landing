@@ -95,7 +95,8 @@ export const saveWaitlistSignup = async (
   email: string,
   name: string,
   source: 'questionnaire' | 'landing' = 'questionnaire',
-  platform?: string
+  platform?: string,
+  language?: string
 ): Promise<string | null> => {
   if (typeof window === 'undefined' || !firestore) {
     console.warn('Firestore not available');
@@ -108,6 +109,7 @@ export const saveWaitlistSignup = async (
       name: name.trim(),
       source,
       platform: platform || 'not-specified',
+      language: language || 'en',
       metadata: {
         userAgent: navigator.userAgent,
         language: navigator.language,

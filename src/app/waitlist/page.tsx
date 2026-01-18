@@ -24,12 +24,24 @@ export default function WaitlistPage() {
     trackWaitlistView('landing');
   }, []);
 
-  const handleSubmit = async (email: string, name: string, platform: string) => {
-    await saveWaitlistSignup(email, name, 'landing', platform);
+  const handleSubmit = async (email: string, name: string, platform: string, language: string) => {
+    await saveWaitlistSignup(email, name, 'landing', platform, language);
     trackWaitlistSignup('landing');
     
     // Track Meta Pixel Lead event
     trackMetaLead('landing');
+    
+    // Send welcome email
+    try {
+      await fetch('/api/send-welcome-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, name, platform, language }),
+      });
+    } catch (error) {
+      console.error('Error sending welcome email:', error);
+      // Don't block the user flow if email fails
+    }
     
     setIsJoined(true);
   };

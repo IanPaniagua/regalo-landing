@@ -5,7 +5,7 @@ import { Button } from "./Button";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 interface WaitlistFormProps {
-  onSubmit: (email: string, name: string, platform: string) => Promise<void>;
+  onSubmit: (email: string, name: string, platform: string, language: string) => Promise<void>;
   onSkip?: () => void;
 }
 
@@ -14,7 +14,7 @@ interface WaitlistFormProps {
  * Collects email and name for waitlist
  */
 export const WaitlistForm: React.FC<WaitlistFormProps> = ({ onSubmit, onSkip }) => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [platform, setPlatform] = useState("");
@@ -43,7 +43,7 @@ export const WaitlistForm: React.FC<WaitlistFormProps> = ({ onSubmit, onSkip }) 
     setIsSubmitting(true);
 
     try {
-      await onSubmit(email, name, platform);
+      await onSubmit(email, name, platform, language);
     } catch (err) {
       setError(t.waitlist.errorGeneric);
       setIsSubmitting(false);
