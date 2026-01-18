@@ -24,8 +24,8 @@ export default function WaitlistPage() {
     trackWaitlistView('landing');
   }, []);
 
-  const handleSubmit = async (email: string, name: string) => {
-    await saveWaitlistSignup(email, name, 'landing');
+  const handleSubmit = async (email: string, name: string, platform: string) => {
+    await saveWaitlistSignup(email, name, 'landing', platform);
     trackWaitlistSignup('landing');
     
     // Track Meta Pixel Lead event

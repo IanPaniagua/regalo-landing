@@ -15,9 +15,9 @@ export const CTASection: React.FC = () => {
   const router = useRouter();
   const { t } = useLanguage();
 
-  const handleStartQuestionnaire = () => {
-    trackButtonClick("cta-participate", "cta-section");
-    router.push("/questionnaire");
+  const handleJoinBeta = () => {
+    trackButtonClick("cta-join-beta", "cta-section");
+    router.push("/waitlist");
   };
 
   return (
@@ -27,30 +27,79 @@ export const CTASection: React.FC = () => {
       data-analytics-section="cta"
     >
       <Container>
-        <div className="text-center max-w-3xl mx-auto">
-          <h2 className="font-display text-3xl sm:text-4xl font-semibold text-neutral-900 mb-8 leading-tight">
-            {t.cta.intro}{' '}
-            <span className="relative inline-block">
-              <span className="relative z-10">{t.cta.interactiveQuestionnaire}</span>
-              <span className="absolute bottom-0 left-0 w-full h-1 bg-secondary-gold"></span>
-            </span>
-            .{' '}
-            {t.cta.outro}
-          </h2>
-          
-          <div className="mb-12">
-            <p className="font-display text-2xl sm:text-3xl font-semibold text-neutral-900 mb-6">
-              {t.cta.wantToParticipate}
+        <div className="max-w-4xl mx-auto">
+          {/* Header */}
+          <div className="text-center mb-12">
+            <h2 className="font-display text-3xl sm:text-4xl font-semibold text-neutral-900 mb-4 leading-tight">
+              {t.cta.title}
+            </h2>
+            <p className="text-xl text-neutral-600 mb-2">
+              {t.cta.subtitle}
             </p>
-            
+            <p className="text-lg text-neutral-500">
+              {t.cta.description}
+            </p>
+          </div>
+
+          {/* Benefits Grid */}
+          <div className="bg-white rounded-2xl p-8 shadow-lg mb-8">
+            <h3 className="font-display text-2xl font-semibold text-neutral-900 mb-6 text-center">
+              {t.cta.benefits.title}
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="flex items-start space-x-4">
+                <div className="flex-shrink-0 w-10 h-10 bg-secondary-blue rounded-full flex items-center justify-center">
+                  <span className="text-white text-xl">✓</span>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-neutral-900 mb-1">{t.cta.benefits.benefit1}</h4>
+                  <p className="text-sm text-neutral-600">{t.cta.benefits.benefit1Desc}</p>
+                </div>
+              </div>
+              <div className="flex items-start space-x-4">
+                <div className="flex-shrink-0 w-10 h-10 bg-secondary-blue rounded-full flex items-center justify-center">
+                  <span className="text-white text-xl">✓</span>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-neutral-900 mb-1">{t.cta.benefits.benefit2}</h4>
+                  <p className="text-sm text-neutral-600">{t.cta.benefits.benefit2Desc}</p>
+                </div>
+              </div>
+              <div className="flex items-start space-x-4">
+                <div className="flex-shrink-0 w-10 h-10 bg-secondary-blue rounded-full flex items-center justify-center">
+                  <span className="text-white text-xl">✓</span>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-neutral-900 mb-1">{t.cta.benefits.benefit3}</h4>
+                  <p className="text-sm text-neutral-600">{t.cta.benefits.benefit3Desc}</p>
+                </div>
+              </div>
+              <div className="flex items-start space-x-4">
+                <div className="flex-shrink-0 w-10 h-10 bg-secondary-blue rounded-full flex items-center justify-center">
+                  <span className="text-white text-xl">✓</span>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-neutral-900 mb-1">{t.cta.benefits.benefit4}</h4>
+                  <p className="text-sm text-neutral-600">{t.cta.benefits.benefit4Desc}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* CTA Button */}
+          <div className="text-center">
             <Button
               variant="primary"
               size="lg"
-              onClick={handleStartQuestionnaire}
-              data-analytics-id="cta-participate"
+              onClick={handleJoinBeta}
+              data-analytics-id="cta-join-beta"
+              className="px-12"
             >
-              {t.cta.letsGo}
+              {t.cta.joinBeta}
             </Button>
+            <p className="text-sm text-neutral-500 mt-4">
+              {t.cta.limitedSpots}
+            </p>
           </div>
         </div>
       </Container>

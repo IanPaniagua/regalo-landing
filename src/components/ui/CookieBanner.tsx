@@ -45,7 +45,7 @@ export const CookieBanner: React.FC = () => {
               {t.cookies.message}{' '}
               <Link 
                 href="/privacy-policy" 
-                className="text-secondary-gold hover:underline"
+                className="text-secondary-blue hover:underline"
               >
                 {t.cookies.learnMore}
               </Link>

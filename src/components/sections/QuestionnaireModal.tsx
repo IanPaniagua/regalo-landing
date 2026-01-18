@@ -163,7 +163,7 @@ export const QuestionnaireModal: React.FC<QuestionnaireModalProps> = ({
                 <div
                   key={index}
                   className={`h-1.5 flex-1 rounded-full transition-all duration-300 ${
-                    index <= currentStep ? "bg-secondary-gold" : "bg-neutral-200"
+                    index <= currentStep ? "bg-secondary-blue" : "bg-neutral-200"
                   }`}
                 />
               ))}

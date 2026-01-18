@@ -14,10 +14,10 @@ const config: Config = {
           white: "#FFFFFF",
         },
         secondary: {
-          DEFAULT: "#D4AF37",
-          gold: "#D4AF37",
-          light: "#F4E4B7",
-          dark: "#B8941F",
+          DEFAULT: "#5B9FED",
+          blue: "#5B9FED",
+          light: "#A3C9F5",
+          dark: "#3D7DD1",
         },
         tertiary: {
           DEFAULT: "#DC143C",

@@ -94,7 +94,8 @@ function getSessionId(): string {
 export const saveWaitlistSignup = async (
   email: string,
   name: string,
-  source: 'questionnaire' | 'landing' = 'questionnaire'
+  source: 'questionnaire' | 'landing' = 'questionnaire',
+  platform?: string
 ): Promise<string | null> => {
   if (typeof window === 'undefined' || !firestore) {
     console.warn('Firestore not available');
@@ -106,6 +107,7 @@ export const saveWaitlistSignup = async (
       email: email.toLowerCase().trim(),
       name: name.trim(),
       source,
+      platform: platform || 'not-specified',
       metadata: {
         userAgent: navigator.userAgent,
         language: navigator.language,

@@ -47,7 +47,7 @@ export const Footer: React.FC = () => {
                 onClick={() => setLanguage('en')}
                 className={`px-2 py-1 rounded transition-colors ${
                   language === 'en'
-                    ? 'bg-secondary-gold text-white font-semibold'
+                    ? 'bg-secondary-blue text-white font-semibold'
                     : 'hover:text-neutral-900'
                 }`}
                 data-analytics-id="footer-lang-en"
@@ -58,7 +58,7 @@ export const Footer: React.FC = () => {
                 onClick={() => setLanguage('es')}
                 className={`px-2 py-1 rounded transition-colors ${
                   language === 'es'
-                    ? 'bg-secondary-gold text-white font-semibold'
+                    ? 'bg-secondary-blue text-white font-semibold'
                     : 'hover:text-neutral-900'
                 }`}
                 data-analytics-id="footer-lang-es"
@@ -69,7 +69,7 @@ export const Footer: React.FC = () => {
                 onClick={() => setLanguage('de')}
                 className={`px-2 py-1 rounded transition-colors ${
                   language === 'de'
-                    ? 'bg-secondary-gold text-white font-semibold'
+                    ? 'bg-secondary-blue text-white font-semibold'
                     : 'hover:text-neutral-900'
                 }`}
                 data-analytics-id="footer-lang-de"

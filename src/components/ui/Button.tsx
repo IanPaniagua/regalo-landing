@@ -63,8 +63,8 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     const baseStyles = "font-display font-medium transition-all duration-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-offset-2";
     
     const variantStyles = {
-      primary: "bg-secondary-gold text-neutral-900 hover:bg-secondary-dark focus:ring-secondary-gold shadow-lg hover:shadow-xl",
-      secondary: "bg-white border-2 border-secondary-gold text-neutral-900 hover:bg-neutral-50 focus:ring-secondary-gold",
+      primary: "bg-secondary-blue text-white hover:bg-secondary-dark focus:ring-secondary-blue shadow-lg hover:shadow-xl",
+      secondary: "bg-white border-2 border-secondary-blue text-neutral-900 hover:bg-neutral-50 focus:ring-secondary-blue",
       tertiary: "bg-tertiary-red text-white hover:bg-tertiary-dark focus:ring-tertiary-red shadow-lg hover:shadow-xl",
     };
     

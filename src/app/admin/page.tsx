@@ -149,7 +149,7 @@ export default function AdminPage() {
         <div className="mt-8 text-center">
           <a
             href="/"
-            className="font-sans text-secondary-gold hover:text-secondary-dark transition-colors"
+            className="font-sans text-secondary-blue hover:text-secondary-dark transition-colors"
           >
             ← Back to Home
           </a>

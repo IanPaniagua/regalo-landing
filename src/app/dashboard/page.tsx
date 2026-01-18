@@ -292,7 +292,7 @@ export default function DashboardPage() {
                       <h3 className="font-medium text-neutral-900 mb-4">
                         <span className="relative inline-block">
                           {stat.questionLabel}
-                          <span className="absolute bottom-0 left-0 w-full h-1 bg-secondary-gold"></span>
+                          <span className="absolute bottom-0 left-0 w-full h-1 bg-secondary-blue"></span>
                         </span>
                       </h3>
                       <p className="text-xs text-neutral-500 mb-4">

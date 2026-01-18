@@ -63,8 +63,8 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
               className={`px-3 py-1.5 lg:px-4 lg:py-2 rounded-xl border-2 transition-all duration-200 font-sans text-xs sm:text-sm
                 ${
                   isSelected(option.value)
-                    ? "border-secondary-gold bg-secondary-light text-neutral-900"
-                    : "border-neutral-300 bg-white text-neutral-700 hover:border-secondary-gold"
+                    ? "border-secondary-blue bg-secondary-light text-neutral-900"
+                    : "border-neutral-300 bg-white text-neutral-700 hover:border-secondary-blue"
                 }`}
               data-analytics-id={`option-${option.value}`}
             >
@@ -80,7 +80,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
             value={textValue}
             onChange={(e) => onTextChange(e.target.value)}
             placeholder={question.placeholder || "Your answer..."}
-            className="w-full px-3 py-2 lg:px-4 lg:py-3 rounded-2xl border-2 border-neutral-300 focus:border-secondary-gold focus:outline-none resize-none bg-neutral-50 font-sans text-sm text-neutral-800"
+            className="w-full px-3 py-2 lg:px-4 lg:py-3 rounded-2xl border-2 border-neutral-300 focus:border-secondary-blue focus:outline-none resize-none bg-neutral-50 font-sans text-sm text-neutral-800"
             rows={2}
             data-analytics-id={`text-input-${question.id}`}
           />

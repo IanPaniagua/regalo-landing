@@ -300,7 +300,7 @@ export default function QuestionnairePage() {
               <div
                 key={index}
                 className={`h-1.5 lg:h-2 flex-1 rounded-full transition-all duration-500 ${
-                  index <= currentStep ? "bg-secondary-gold" : "bg-neutral-200"
+                  index <= currentStep ? "bg-secondary-blue" : "bg-neutral-200"
                 }`}
               />
             ))}

@@ -142,7 +142,7 @@ export default function PrivacyPolicyPage() {
                     href="https://tools.google.com/dlpage/gaoptout" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="text-secondary-gold hover:underline"
+                    className="text-secondary-blue hover:underline"
                   >
                     Google Analytics Opt-out Browser Add-on
                   </a>
@@ -204,7 +204,7 @@ export default function PrivacyPolicyPage() {
                 To exercise any of these rights, please contact us at:{' '}
                 <a 
                   href="mailto:paniagua.ian.de@gmail.com" 
-                  className="text-secondary-gold hover:underline"
+                  className="text-secondary-blue hover:underline"
                 >
                   paniagua.ian.de@gmail.com
                 </a>
@@ -272,7 +272,7 @@ export default function PrivacyPolicyPage() {
                 Email:{' '}
                 <a 
                   href="mailto:privacy@regalo.app" 
-                  className="text-secondary-gold hover:underline"
+                  className="text-secondary-blue hover:underline"
                 >
                   privacy@regalo.app
                 </a>
