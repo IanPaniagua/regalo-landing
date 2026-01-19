@@ -6,7 +6,7 @@ import { Container } from "@/components/ui/Container";
 import { Logo } from "@/components/ui/Logo";
 import { Button } from "@/components/ui/Button";
 import { WaitlistForm } from "@/components/ui/WaitlistForm";
-import { saveWaitlistSignup } from "@/lib/firestoreService";
+import { saveBetaTester } from "@/lib/firestoreService";
 import { trackWaitlistView, trackWaitlistSignup, trackWaitlistSkip } from "@/lib/analytics";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { trackMetaLead } from "@/lib/metaPixel";
@@ -25,7 +25,11 @@ export default function WaitlistPage() {
   }, []);
 
   const handleSubmit = async (email: string, name: string, platform: string, language: string) => {
-    await saveWaitlistSignup(email, name, 'landing', platform, language);
+    console.log('🚀 handleSubmit called with:', { email, name, platform, language });
+    
+    const testerId = await saveBetaTester(email, name, platform, language, 'landing');
+    console.log('💾 saveBetaTester returned ID:', testerId);
+    
     trackWaitlistSignup('landing');
     
     // Track Meta Pixel Lead event
@@ -33,16 +37,19 @@ export default function WaitlistPage() {
     
     // Send welcome email
     try {
-      await fetch('/api/send-welcome-email', {
+      console.log('📧 Calling email API...');
+      const response = await fetch('/api/send-welcome-email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, name, platform, language }),
       });
+      console.log('📧 Email API response:', response.status);
     } catch (error) {
       console.error('Error sending welcome email:', error);
       // Don't block the user flow if email fails
     }
     
+    console.log('✅ Setting isJoined to true');
     setIsJoined(true);
   };
 

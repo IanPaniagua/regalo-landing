@@ -91,6 +91,10 @@ export const WaitlistForm: React.FC<WaitlistFormProps> = ({ onSubmit, onSkip }) 
             disabled={isSubmitting}
             data-analytics-id="waitlist-email-input"
           />
+          <p className="mt-2 text-xs text-neutral-600 flex items-start gap-1">
+            <span className="text-secondary-blue mt-0.5">ℹ️</span>
+            <span>{t.waitlist.emailHelp}</span>
+          </p>
         </div>
 
         {/* Platform Selection */}

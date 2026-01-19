@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { Resend } from 'resend';
 import { getWelcomeEmail, Platform, EmailLanguage } from '@/lib/emailTemplates';
 
 /**
@@ -40,25 +41,53 @@ export async function POST(request: NextRequest) {
       language as EmailLanguage
     );
 
-    // Send email using Resend (you'll need to set up Resend and add API key to .env)
-    // For now, we'll log the email that would be sent
-    console.log('📧 Welcome email prepared for:', {
+    // Initialize Resend
+    const resend = new Resend(process.env.RESEND_API_KEY);
+    const adminEmail = process.env.ADMIN_EMAIL || 'ian@regaloapp.com';
+    const platformEmoji = platform === 'ios' ? '📱' : '🤖';
+    const languageNames = { en: 'English', es: 'Spanish', de: 'German' };
+
+    console.log('📧 Sending welcome email to:', email);
+    console.log('📧 Sending admin notification to:', adminEmail);
+    console.log('🔑 Using API key:', process.env.RESEND_API_KEY ? 'Present' : 'MISSING!');
+
+    // Send welcome email to user
+    const userEmailResult = await resend.emails.send({
+      from: 'RegaloApp <onboarding@resend.dev>',
       to: email,
-      name,
-      platform,
-      language,
       subject: emailTemplate.subject,
+      html: emailTemplate.html,
+      text: emailTemplate.text,
     });
 
-    // TODO: Uncomment when Resend is configured
-    // const resend = new Resend(process.env.RESEND_API_KEY);
-    // await resend.emails.send({
-    //   from: 'RegaloApp <hello@regaloapp.com>',
-    //   to: email,
-    //   subject: emailTemplate.subject,
-    //   html: emailTemplate.html,
-    //   text: emailTemplate.text,
-    // });
+    console.log('📧 User email result:', JSON.stringify(userEmailResult, null, 2));
+
+    // Send notification to admin
+    const adminEmailResult = await resend.emails.send({
+      from: 'RegaloApp <onboarding@resend.dev>',
+      to: adminEmail,
+      subject: `🎯 New Beta Tester: ${name}`,
+      html: `
+        <h2>New Beta Tester Signup!</h2>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Platform:</strong> ${platformEmoji} ${platform.toUpperCase()}</p>
+        <p><strong>Language:</strong> ${languageNames[language as EmailLanguage]}</p>
+        <p><strong>Time:</strong> ${new Date().toLocaleString()}</p>
+      `,
+      text: `
+New Beta Tester Signup!
+
+Name: ${name}
+Email: ${email}
+Platform: ${platform.toUpperCase()}
+Language: ${languageNames[language as EmailLanguage]}
+Time: ${new Date().toLocaleString()}
+      `,
+    });
+
+    console.log('📧 Admin email result:', JSON.stringify(adminEmailResult, null, 2));
+    console.log('✅ Emails sent successfully!');
 
     return NextResponse.json({
       success: true,

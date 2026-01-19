@@ -49,7 +49,7 @@ export const Hero: React.FC = () => {
             <div className="flex items-center gap-3 mb-6">
               <span className="text-4xl">🎁</span>
               <span className="text-secondary-blue font-semibold text-sm uppercase tracking-wider">
-                Smart Gift Coordination
+                Regalos App
               </span>
             </div>
 

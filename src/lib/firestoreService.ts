@@ -1,5 +1,16 @@
 import { firestore } from './firebase';
-import { collection, addDoc, serverTimestamp, getDocs, query, orderBy, limit } from 'firebase/firestore';
+import { 
+  collection, 
+  addDoc, 
+  getDocs, 
+  doc,
+  updateDoc,
+  query, 
+  orderBy, 
+  limit as firestoreLimit,
+  serverTimestamp,
+  Timestamp,
+} from 'firebase/firestore';
 import { QuestionnaireResponse } from './questionnaireStorage';
 
 /**
@@ -89,7 +100,56 @@ function getSessionId(): string {
 }
 
 /**
- * Save waitlist signup to Firestore
+ * Save beta tester to Firestore (separate collection)
+ */
+export const saveBetaTester = async (
+  email: string,
+  name: string,
+  platform: string,
+  language: string,
+  source: 'questionnaire' | 'landing' = 'landing'
+): Promise<string | null> => {
+  console.log('🔵 saveBetaTester called with:', { email, name, platform, language, source });
+  
+  if (typeof window === 'undefined' || !firestore) {
+    console.warn('❌ Firestore not available');
+    return null;
+  }
+
+  console.log('✅ Firestore is available, attempting to save...');
+
+  try {
+    const data = {
+      email: email.toLowerCase().trim(),
+      name: name.trim(),
+      platform,
+      language,
+      source,
+      downloadedApp: false,
+      metadata: {
+        userAgent: navigator.userAgent,
+        language: navigator.language,
+        referrer: document.referrer || 'direct',
+        sessionId: getSessionId(),
+      },
+      timestamp: serverTimestamp(),
+      createdAt: new Date().toISOString(),
+    };
+
+    console.log('📝 Data to save:', data);
+
+    const docRef = await addDoc(collection(firestore, 'beta_testers'), data);
+
+    console.log('✅ Beta tester saved successfully! ID:', docRef.id);
+    return docRef.id;
+  } catch (error) {
+    console.error('❌ Error saving beta tester:', error);
+    return null;
+  }
+};
+
+/**
+ * Save waitlist signup to Firestore (legacy)
  */
 export const saveWaitlistSignup = async (
   email: string,
@@ -197,7 +257,7 @@ export const fetchQuestionnaireResponses = async (maxResults: number = 100) => {
     const q = query(
       collection(firestore, 'questionnaire_responses'),
       orderBy('createdAt', 'desc'),
-      limit(maxResults)
+      firestoreLimit(maxResults)
     );
     
     const querySnapshot = await getDocs(q);
@@ -218,11 +278,62 @@ export const fetchQuestionnaireResponses = async (maxResults: number = 100) => {
 };
 
 /**
- * Fetch all waitlist signups from Firestore
- * Used for dashboard analytics
+ * Fetch beta testers from Firestore
  */
-export const fetchWaitlistSignups = async (maxResults: number = 100) => {
-  if (!firestore) {
+export const fetchBetaTesters = async (limit: number = 100) => {
+  if (typeof window === 'undefined' || !firestore) {
+    console.warn('Firestore not available');
+    return [];
+  }
+
+  try {
+    const q = query(
+      collection(firestore, 'beta_testers'),
+      orderBy('timestamp', 'desc'),
+      firestoreLimit(limit)
+    );
+    
+    const querySnapshot = await getDocs(q);
+    return querySnapshot.docs.map(doc => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+  } catch (error) {
+    console.error('Error fetching beta testers:', error);
+    return [];
+  }
+};
+
+/**
+ * Update beta tester downloadedApp status
+ */
+export const updateBetaTesterDownloadStatus = async (
+  testerId: string,
+  downloadedApp: boolean
+): Promise<boolean> => {
+  if (typeof window === 'undefined' || !firestore) {
+    console.warn('Firestore not available');
+    return false;
+  }
+
+  try {
+    const docRef = doc(firestore, 'beta_testers', testerId);
+    await updateDoc(docRef, {
+      downloadedApp,
+      lastUpdated: serverTimestamp(),
+    });
+    return true;
+  } catch (error) {
+    console.error('Error updating beta tester download status:', error);
+    return false;
+  }
+};
+
+/**
+ * Fetch waitlist signups from Firestore
+ */
+export const fetchWaitlistSignups = async (limit: number = 100) => {
+  if (typeof window === 'undefined' || !firestore) {
     console.warn('Firestore not available');
     return [];
   }
@@ -230,21 +341,15 @@ export const fetchWaitlistSignups = async (maxResults: number = 100) => {
   try {
     const q = query(
       collection(firestore, 'waitlist_signups'),
-      orderBy('createdAt', 'desc'),
-      limit(maxResults)
+      orderBy('timestamp', 'desc'),
+      firestoreLimit(limit)
     );
     
     const querySnapshot = await getDocs(q);
-    const signups: any[] = [];
-    
-    querySnapshot.forEach((doc) => {
-      signups.push({
-        id: doc.id,
-        ...doc.data(),
-      });
-    });
-    
-    return signups;
+    return querySnapshot.docs.map(doc => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
   } catch (error) {
     console.error('Error fetching waitlist signups:', error);
     return [];

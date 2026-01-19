@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useMemo } from "react";
-import { fetchQuestionnaireResponses, fetchWaitlistSignups } from "@/lib/firestoreService";
+import { fetchQuestionnaireResponses, fetchWaitlistSignups, fetchBetaTesters, updateBetaTesterDownloadStatus } from "@/lib/firestoreService";
 import { Container } from "@/components/ui/Container";
 import { Logo } from "@/components/ui/Logo";
 import { DashboardAuth } from "@/components/DashboardAuth";
@@ -30,6 +30,24 @@ interface WaitlistSignup {
   email: string;
   name: string;
   source: string;
+  platform?: string;
+  language?: string;
+  createdAt: string;
+  metadata?: {
+    userAgent?: string;
+    language?: string;
+    referrer?: string;
+  };
+}
+
+interface BetaTester {
+  id: string;
+  email: string;
+  name: string;
+  platform: string;
+  language: string;
+  source: string;
+  downloadedApp: boolean;
   createdAt: string;
   metadata?: {
     userAgent?: string;
@@ -45,8 +63,9 @@ interface WaitlistSignup {
 export default function DashboardPage() {
   const [responses, setResponses] = useState<QuestionnaireResponseData[]>([]);
   const [waitlist, setWaitlist] = useState<WaitlistSignup[]>([]);
+  const [betaTesters, setBetaTesters] = useState<BetaTester[]>([]);
   const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState<"analytics" | "questionnaires" | "waitlist">("analytics");
+  const [activeTab, setActiveTab] = useState<"analytics" | "questionnaires" | "waitlist" | "beta">("beta");
   const [selectedResponse, setSelectedResponse] = useState<QuestionnaireResponseData | null>(null);
 
   useEffect(() => {
@@ -55,12 +74,14 @@ export default function DashboardPage() {
 
   const loadData = async () => {
     setLoading(true);
-    const [responsesData, waitlistData] = await Promise.all([
+    const [responsesData, waitlistData, betaTestersData] = await Promise.all([
       fetchQuestionnaireResponses(200),
       fetchWaitlistSignups(200),
+      fetchBetaTesters(200),
     ]);
     setResponses(responsesData as QuestionnaireResponseData[]);
     setWaitlist(waitlistData as WaitlistSignup[]);
+    setBetaTesters(betaTestersData as BetaTester[]);
     setLoading(false);
   };
 
@@ -71,6 +92,43 @@ export default function DashboardPage() {
   const analyticsStats = useMemo(() => {
     return calculateQuestionnaireStats(filteredResponses);
   }, [filteredResponses]);
+
+  // Old waitlist is now just the waitlist_signups collection
+  const oldWaitlist = waitlist;
+
+  // Calculate beta tester stats
+  const betaStats = useMemo(() => {
+    const platformCounts = betaTesters.reduce((acc, tester) => {
+      const platform = tester.platform;
+      acc[platform] = (acc[platform] || 0) + 1;
+      return acc;
+    }, {} as Record<string, number>);
+
+    const languageCounts = betaTesters.reduce((acc, tester) => {
+      const lang = tester.language;
+      acc[lang] = (acc[lang] || 0) + 1;
+      return acc;
+    }, {} as Record<string, number>);
+
+    const downloadedCount = betaTesters.filter(t => t.downloadedApp).length;
+
+    return {
+      total: betaTesters.length,
+      platforms: platformCounts,
+      languages: languageCounts,
+      ios: platformCounts['ios'] || 0,
+      android: platformCounts['android'] || 0,
+      downloaded: downloadedCount,
+    };
+  }, [betaTesters]);
+
+  const handleToggleDownload = async (testerId: string, currentStatus: boolean) => {
+    const success = await updateBetaTesterDownloadStatus(testerId, !currentStatus);
+    if (success) {
+      // Reload data to reflect changes
+      loadData();
+    }
+  };
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -220,12 +278,52 @@ export default function DashboardPage() {
               Dashboard
             </h1>
             <p className="text-neutral-600">
-              Questionnaire responses and waitlist overview
+              Beta tester analytics and waitlist overview
             </p>
+            
+            {/* Beta Stats Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-6">
+              <div className="bg-white rounded-lg p-4 shadow-sm border border-neutral-200">
+                <p className="text-sm text-neutral-600 mb-1">Total Beta Testers</p>
+                <p className="text-3xl font-bold text-neutral-900">{betaStats.total}</p>
+              </div>
+              <div className="bg-white rounded-lg p-4 shadow-sm border border-neutral-200">
+                <p className="text-sm text-neutral-600 mb-1">iOS Testers</p>
+                <p className="text-3xl font-bold text-secondary-blue">{betaStats.ios}</p>
+                <p className="text-xs text-neutral-500 mt-1">
+                  {betaStats.total > 0 ? ((betaStats.ios / betaStats.total) * 100).toFixed(1) : 0}%
+                </p>
+              </div>
+              <div className="bg-white rounded-lg p-4 shadow-sm border border-neutral-200">
+                <p className="text-sm text-neutral-600 mb-1">Android Testers</p>
+                <p className="text-3xl font-bold text-secondary-blue">{betaStats.android}</p>
+                <p className="text-xs text-neutral-500 mt-1">
+                  {betaStats.total > 0 ? ((betaStats.android / betaStats.total) * 100).toFixed(1) : 0}%
+                </p>
+              </div>
+              <div className="bg-white rounded-lg p-4 shadow-sm border border-neutral-200">
+                <p className="text-sm text-neutral-600 mb-1">Languages</p>
+                <div className="flex gap-2 mt-2">
+                  <span className="text-sm font-medium">EN: {betaStats.languages['en'] || 0}</span>
+                  <span className="text-sm font-medium">ES: {betaStats.languages['es'] || 0}</span>
+                  <span className="text-sm font-medium">DE: {betaStats.languages['de'] || 0}</span>
+                </div>
+              </div>
+            </div>
           </div>
 
         {/* Tabs */}
         <div className="flex gap-4 mb-6 border-b border-neutral-200">
+          <button
+            onClick={() => setActiveTab("beta")}
+            className={`pb-3 px-4 font-medium transition-colors ${
+              activeTab === "beta"
+                ? "text-secondary-blue border-b-2 border-secondary-blue"
+                : "text-neutral-500 hover:text-neutral-700"
+            }`}
+          >
+            🎯 Beta Testers ({betaTesters.length})
+          </button>
           <button
             onClick={() => setActiveTab("analytics")}
             className={`pb-3 px-4 font-medium transition-colors ${
@@ -244,7 +342,7 @@ export default function DashboardPage() {
                 : "text-neutral-500 hover:text-neutral-700"
             }`}
           >
-            Responses ({filteredResponses.length})
+            📝 Responses ({filteredResponses.length})
           </button>
           <button
             onClick={() => setActiveTab("waitlist")}
@@ -254,9 +352,111 @@ export default function DashboardPage() {
                 : "text-neutral-500 hover:text-neutral-700"
             }`}
           >
-            Waitlist ({waitlist.length})
+            📋 Old Waitlist ({oldWaitlist.length})
           </button>
         </div>
+
+        {/* Beta Testers Tab */}
+        {activeTab === "beta" && (
+          <div>
+            <div className="mb-6">
+              <h2 className="font-display text-2xl font-semibold text-neutral-900 mb-2">
+                Beta Testers
+              </h2>
+              <p className="text-neutral-600 text-sm">
+                Users who signed up for beta testing with platform and language selection
+              </p>
+            </div>
+            
+            {betaTesters.length === 0 ? (
+              <div className="bg-white rounded-lg p-12 shadow-sm border border-neutral-200 text-center">
+                <p className="text-neutral-500 text-lg mb-2">No beta testers yet</p>
+                <p className="text-neutral-400 text-sm">New signups with platform selection will appear here</p>
+              </div>
+            ) : (
+              <div className="bg-white rounded-lg shadow-sm border border-neutral-200 overflow-hidden">
+                <table className="w-full">
+                  <thead className="bg-neutral-50 border-b border-neutral-200">
+                    <tr>
+                      <th className="text-left py-3 px-4 font-medium text-neutral-700 text-sm">
+                        Name
+                      </th>
+                      <th className="text-left py-3 px-4 font-medium text-neutral-700 text-sm">
+                        Email
+                      </th>
+                      <th className="text-left py-3 px-4 font-medium text-neutral-700 text-sm">
+                        Platform
+                      </th>
+                      <th className="text-left py-3 px-4 font-medium text-neutral-700 text-sm">
+                        Language
+                      </th>
+                      <th className="text-left py-3 px-4 font-medium text-neutral-700 text-sm">
+                        Downloaded App
+                      </th>
+                      <th className="text-left py-3 px-4 font-medium text-neutral-700 text-sm">
+                        Source
+                      </th>
+                      <th className="text-left py-3 px-4 font-medium text-neutral-700 text-sm">
+                        Date
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {betaTesters.map((tester) => (
+                      <tr key={tester.id} className="border-b border-neutral-100 last:border-0 hover:bg-neutral-50 transition-colors">
+                        <td className="py-3 px-4 text-sm text-neutral-900 font-medium">{tester.name}</td>
+                        <td className="py-3 px-4 text-sm text-neutral-700 font-mono">
+                          {tester.email}
+                        </td>
+                        <td className="py-3 px-4 text-sm">
+                          <span
+                            className={`inline-flex items-center gap-1 px-2 py-1 rounded text-xs font-medium ${
+                              tester.platform === "ios"
+                                ? "bg-blue-100 text-blue-700"
+                                : tester.platform === "android"
+                                ? "bg-green-100 text-green-700"
+                                : "bg-neutral-100 text-neutral-600"
+                            }`}
+                          >
+                            {tester.platform === "ios" && "📱"}
+                            {tester.platform === "android" && "🤖"}
+                            {tester.platform.toUpperCase()}
+                          </span>
+                        </td>
+                        <td className="py-3 px-4 text-sm">
+                          <span className="inline-block px-2 py-1 rounded text-xs font-medium bg-secondary-light text-secondary-dark">
+                            {tester.language.toUpperCase()}
+                          </span>
+                        </td>
+                        <td className="py-3 px-4 text-sm">
+                          <label className="flex items-center gap-2 cursor-pointer">
+                            <input
+                              type="checkbox"
+                              checked={tester.downloadedApp}
+                              onChange={() => handleToggleDownload(tester.id, tester.downloadedApp)}
+                              className="w-4 h-4 rounded border-neutral-300 text-secondary-blue focus:ring-secondary-blue cursor-pointer"
+                            />
+                            <span className={`text-xs font-medium ${tester.downloadedApp ? 'text-green-600' : 'text-neutral-400'}`}>
+                              {tester.downloadedApp ? '✓ Downloaded' : 'Not yet'}
+                            </span>
+                          </label>
+                        </td>
+                        <td className="py-3 px-4 text-sm">
+                          <span className="inline-block px-2 py-1 rounded text-xs font-medium bg-orange-100 text-orange-700">
+                            {tester.source}
+                          </span>
+                        </td>
+                        <td className="py-3 px-4 text-sm text-neutral-600">
+                          {formatDate(tester.createdAt)}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+          </div>
+        )}
 
         {/* Analytics Tab */}
         {activeTab === "analytics" && (
@@ -458,14 +658,19 @@ export default function DashboardPage() {
           </div>
         )}
 
-        {/* Waitlist Tab */}
+        {/* Old Waitlist Tab */}
         {activeTab === "waitlist" && (
           <div>
-            <h2 className="font-display text-2xl font-semibold text-neutral-900 mb-4">
-              Waitlist
-            </h2>
-            {waitlist.length === 0 ? (
-              <p className="text-neutral-500">No signups yet</p>
+            <div className="mb-6">
+              <h2 className="font-display text-2xl font-semibold text-neutral-900 mb-2">
+                Old Waitlist
+              </h2>
+              <p className="text-neutral-600 text-sm">
+                Legacy waitlist signups from before the beta testing program (no platform/language data)
+              </p>
+            </div>
+            {oldWaitlist.length === 0 ? (
+              <p className="text-neutral-500">No old waitlist signups</p>
             ) : (
               <div className="bg-white rounded-lg shadow-sm border border-neutral-200 overflow-hidden">
                 <table className="w-full">
@@ -486,9 +691,9 @@ export default function DashboardPage() {
                     </tr>
                   </thead>
                   <tbody>
-                    {waitlist.map((signup) => (
-                      <tr key={signup.id} className="border-b border-neutral-100 last:border-0">
-                        <td className="py-3 px-4 text-sm text-neutral-900">{signup.name}</td>
+                    {oldWaitlist.map((signup) => (
+                      <tr key={signup.id} className="border-b border-neutral-100 last:border-0 hover:bg-neutral-50 transition-colors">
+                        <td className="py-3 px-4 text-sm text-neutral-900 font-medium">{signup.name}</td>
                         <td className="py-3 px-4 text-sm text-neutral-700 font-mono">
                           {signup.email}
                         </td>
@@ -496,8 +701,8 @@ export default function DashboardPage() {
                           <span
                             className={`inline-block px-2 py-1 rounded text-xs font-medium ${
                               signup.source === "questionnaire"
-                                ? "bg-blue-100 text-blue-700"
-                                : "bg-green-100 text-green-700"
+                                ? "bg-purple-100 text-purple-700"
+                                : "bg-orange-100 text-orange-700"
                             }`}
                           >
                             {signup.source}

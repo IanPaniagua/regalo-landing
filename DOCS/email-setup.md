@@ -59,13 +59,17 @@ npm install resend
 2. Create a new API key
 3. Verify your domain (or use Resend's test domain for development)
 
-### 3. Add Environment Variable
+### 3. Add Environment Variables
 
 Create/update `.env.local`:
 
 ```env
 RESEND_API_KEY=re_your_api_key_here
+ADMIN_EMAIL=ian@regaloapp.com
 ```
+
+- `RESEND_API_KEY`: Your Resend API key for sending emails
+- `ADMIN_EMAIL`: Email address to receive notifications when someone signs up for beta testing
 
 ### 4. Update API Route
 
@@ -91,9 +95,26 @@ Update the `from` field with your verified domain:
 - Development: `onboarding@resend.dev` (Resend's test domain)
 - Production: `hello@regaloapp.com` (your verified domain)
 
-## Email Content
+## Email System Features
 
-Each email includes:
+### Two Emails Sent Per Signup
+
+When a user signs up for beta testing, **two emails are sent**:
+
+1. **Welcome Email to User**
+   - Personalized with their name
+   - Platform-specific instructions (iOS/Android)
+   - In their selected language (EN/ES/DE)
+   
+2. **Notification Email to Admin**
+   - Subject: "🎯 New Beta Tester: [Name]"
+   - Contains: Name, Email, Platform, Language, Timestamp
+   - Sent to email specified in `ADMIN_EMAIL` env variable
+   - Allows you to track signups in real-time
+
+## User Welcome Email Content
+
+Each welcome email includes:
 
 ### Greeting
 - Personalized with user's name
