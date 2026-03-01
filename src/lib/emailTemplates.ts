@@ -23,7 +23,7 @@ export function getWelcomeEmail(
   const templates = {
     ios: {
       en: {
-        subject: '🎉 Welcome to RegaloApp Beta - iOS Testing!',
+        subject: '🎉 Welcome to Regalos App Beta - iOS Testing!',
         html: `
 <!DOCTYPE html>
 <html>
@@ -42,7 +42,7 @@ export function getWelcomeEmail(
 </head>
 <body>
   <div class="header">
-    <h1>🎁 Welcome to RegaloApp Beta!</h1>
+    <h1>🎁 Welcome to Regalos App Beta!</h1>
   </div>
   
   <div class="content">
@@ -53,13 +53,13 @@ export function getWelcomeEmail(
     <p><strong>What happens next?</strong></p>
     <ul>
       <li><span class="emoji">📧</span> You'll receive an email with TestFlight instructions within 24-48 hours</li>
-      <li><span class="emoji">📱</span> Download RegaloApp through TestFlight on your iPhone/iPad</li>
+      <li><span class="emoji">📱</span> Download Regalos App through TestFlight on your iPhone/iPad</li>
       <li><span class="emoji">🎯</span> Start organizing birthdays and coordinating gifts!</li>
       <li><span class="emoji">💬</span> Share your feedback directly through the app or reply to our emails</li>
     </ul>
     
     <p><strong>Your feedback matters!</strong></p>
-    <p>As a beta tester, you're helping shape the future of RegaloApp. We want to hear about:</p>
+    <p>As a beta tester, you're helping shape the future of Regalos App. We want to hear about:</p>
     <ul>
       <li>Features you love ❤️</li>
       <li>Things that could be improved 🔧</li>
@@ -71,10 +71,10 @@ export function getWelcomeEmail(
   </div>
   
   <div class="footer">
-    <p><strong>RegaloApp Team</strong></p>
+    <p><strong>Regalos App Team</strong></p>
     <p>Making birthdays memorable, one celebration at a time 🎂</p>
     <p style="font-size: 12px; color: #999; margin-top: 20px;">
-      You're receiving this email because you signed up for RegaloApp Beta Testing.
+      You're receiving this email because you signed up for Regalos App Beta Testing.
     </p>
   </div>
 </body>
@@ -87,12 +87,12 @@ Thank you for joining our iOS Beta Testing program! We're thrilled to have you a
 
 What happens next?
 - You'll receive an email with TestFlight instructions within 24-48 hours
-- Download RegaloApp through TestFlight on your iPhone/iPad
+- Download Regalos App through TestFlight on your iPhone/iPad
 - Start organizing birthdays and coordinating gifts!
 - Share your feedback directly through the app or reply to our emails
 
 Your feedback matters!
-As a beta tester, you're helping shape the future of RegaloApp. We want to hear about:
+As a beta tester, you're helping shape the future of Regalos App. We want to hear about:
 - Features you love
 - Things that could be improved
 - Bugs or issues you encounter
@@ -100,12 +100,12 @@ As a beta tester, you're helping shape the future of RegaloApp. We want to hear 
 
 Feel free to reply to this email anytime with your thoughts, questions, or feedback. We read every message!
 
-RegaloApp Team
+Regalos App Team
 Making birthdays memorable, one celebration at a time 🎂
         `
       },
       es: {
-        subject: '🎉 Bienvenido a RegaloApp Beta - ¡Pruebas en iOS!',
+        subject: '🎉 Bienvenido a Regalos App Beta - ¡Pruebas en iOS!',
         html: `
 <!DOCTYPE html>
 <html>
@@ -124,7 +124,7 @@ Making birthdays memorable, one celebration at a time 🎂
 </head>
 <body>
   <div class="header">
-    <h1>🎁 ¡Bienvenido a RegaloApp Beta!</h1>
+    <h1>🎁 ¡Bienvenido a Regalos App Beta!</h1>
   </div>
   
   <div class="content">
@@ -135,13 +135,13 @@ Making birthdays memorable, one celebration at a time 🎂
     <p><strong>¿Qué sigue ahora?</strong></p>
     <ul>
       <li><span class="emoji">📧</span> Recibirás un email con instrucciones de TestFlight en 24-48 horas</li>
-      <li><span class="emoji">📱</span> Descarga RegaloApp a través de TestFlight en tu iPhone/iPad</li>
+      <li><span class="emoji">📱</span> Descarga Regalos App a través de TestFlight en tu iPhone/iPad</li>
       <li><span class="emoji">🎯</span> ¡Empieza a organizar cumpleaños y coordinar regalos!</li>
       <li><span class="emoji">💬</span> Comparte tu feedback directamente en la app o respondiendo a nuestros emails</li>
     </ul>
     
     <p><strong>¡Tu feedback es importante!</strong></p>
-    <p>Como beta tester, estás ayudando a dar forma al futuro de RegaloApp. Queremos saber sobre:</p>
+    <p>Como beta tester, estás ayudando a dar forma al futuro de Regalos App. Queremos saber sobre:</p>
     <ul>
       <li>Funciones que te encantan ❤️</li>
       <li>Cosas que podrían mejorarse 🔧</li>
@@ -153,10 +153,10 @@ Making birthdays memorable, one celebration at a time 🎂
   </div>
   
   <div class="footer">
-    <p><strong>Equipo RegaloApp</strong></p>
+    <p><strong>Equipo Regalos App</strong></p>
     <p>Haciendo los cumpleaños memorables, una celebración a la vez 🎂</p>
     <p style="font-size: 12px; color: #999; margin-top: 20px;">
-      Recibes este email porque te registraste en RegaloApp Beta Testing.
+      Recibes este email porque te registraste en Regalos App Beta Testing.
     </p>
   </div>
 </body>
@@ -169,12 +169,12 @@ Making birthdays memorable, one celebration at a time 🎂
 
 ¿Qué sigue ahora?
 - Recibirás un email con instrucciones de TestFlight en 24-48 horas
-- Descarga RegaloApp a través de TestFlight en tu iPhone/iPad
+- Descarga Regalos App a través de TestFlight en tu iPhone/iPad
 - ¡Empieza a organizar cumpleaños y coordinar regalos!
 - Comparte tu feedback directamente en la app o respondiendo a nuestros emails
 
 ¡Tu feedback es importante!
-Como beta tester, estás ayudando a dar forma al futuro de RegaloApp. Queremos saber sobre:
+Como beta tester, estás ayudando a dar forma al futuro de Regalos App. Queremos saber sobre:
 - Funciones que te encantan
 - Cosas que podrían mejorarse
 - Bugs o problemas que encuentres
@@ -182,12 +182,12 @@ Como beta tester, estás ayudando a dar forma al futuro de RegaloApp. Queremos s
 
 Siéntete libre de responder a este email en cualquier momento con tus pensamientos, preguntas o feedback. ¡Leemos cada mensaje!
 
-Equipo RegaloApp
+Equipo Regalos App
 Haciendo los cumpleaños memorables, una celebración a la vez 🎂
         `
       },
       de: {
-        subject: '🎉 Willkommen bei RegaloApp Beta - iOS Testing!',
+        subject: '🎉 Willkommen bei Regalos App Beta - iOS Testing!',
         html: `
 <!DOCTYPE html>
 <html>
@@ -206,7 +206,7 @@ Haciendo los cumpleaños memorables, una celebración a la vez 🎂
 </head>
 <body>
   <div class="header">
-    <h1>🎁 Willkommen bei RegaloApp Beta!</h1>
+    <h1>🎁 Willkommen bei Regalos App Beta!</h1>
   </div>
   
   <div class="content">
@@ -217,13 +217,13 @@ Haciendo los cumpleaños memorables, una celebración a la vez 🎂
     <p><strong>Was passiert als Nächstes?</strong></p>
     <ul>
       <li><span class="emoji">📧</span> Du erhältst innerhalb von 24-48 Stunden eine E-Mail mit TestFlight-Anweisungen</li>
-      <li><span class="emoji">📱</span> Lade RegaloApp über TestFlight auf dein iPhone/iPad herunter</li>
+      <li><span class="emoji">📱</span> Lade Regalos App über TestFlight auf dein iPhone/iPad herunter</li>
       <li><span class="emoji">🎯</span> Beginne mit der Organisation von Geburtstagen und der Koordination von Geschenken!</li>
       <li><span class="emoji">💬</span> Teile dein Feedback direkt über die App oder antworte auf unsere E-Mails</li>
     </ul>
     
     <p><strong>Dein Feedback ist wichtig!</strong></p>
-    <p>Als Beta-Tester hilfst du, die Zukunft von RegaloApp zu gestalten. Wir möchten hören über:</p>
+    <p>Als Beta-Tester hilfst du, die Zukunft von Regalos App zu gestalten. Wir möchten hören über:</p>
     <ul>
       <li>Funktionen, die du liebst ❤️</li>
       <li>Dinge, die verbessert werden könnten 🔧</li>
@@ -235,10 +235,10 @@ Haciendo los cumpleaños memorables, una celebración a la vez 🎂
   </div>
   
   <div class="footer">
-    <p><strong>RegaloApp Team</strong></p>
+    <p><strong>Regalos App Team</strong></p>
     <p>Geburtstage unvergesslich machen, eine Feier nach der anderen 🎂</p>
     <p style="font-size: 12px; color: #999; margin-top: 20px;">
-      Du erhältst diese E-Mail, weil du dich für RegaloApp Beta Testing angemeldet hast.
+      Du erhältst diese E-Mail, weil du dich für Regalos App Beta Testing angemeldet hast.
     </p>
   </div>
 </body>
@@ -251,12 +251,12 @@ Vielen Dank, dass du unserem iOS Beta-Testing-Programm beigetreten bist! Wir fre
 
 Was passiert als Nächstes?
 - Du erhältst innerhalb von 24-48 Stunden eine E-Mail mit TestFlight-Anweisungen
-- Lade RegaloApp über TestFlight auf dein iPhone/iPad herunter
+- Lade Regalos App über TestFlight auf dein iPhone/iPad herunter
 - Beginne mit der Organisation von Geburtstagen und der Koordination von Geschenken!
 - Teile dein Feedback direkt über die App oder antworte auf unsere E-Mails
 
 Dein Feedback ist wichtig!
-Als Beta-Tester hilfst du, die Zukunft von RegaloApp zu gestalten. Wir möchten hören über:
+Als Beta-Tester hilfst du, die Zukunft von Regalos App zu gestalten. Wir möchten hören über:
 - Funktionen, die du liebst
 - Dinge, die verbessert werden könnten
 - Bugs oder Probleme, die du findest
@@ -264,14 +264,14 @@ Als Beta-Tester hilfst du, die Zukunft von RegaloApp zu gestalten. Wir möchten 
 
 Antworte jederzeit auf diese E-Mail mit deinen Gedanken, Fragen oder Feedback. Wir lesen jede Nachricht!
 
-RegaloApp Team
+Regalos App Team
 Geburtstage unvergesslich machen, eine Feier nach der anderen 🎂
         `
       }
     },
     android: {
       en: {
-        subject: '🎉 Welcome to RegaloApp Beta - Android Testing!',
+        subject: '🎉 Welcome to Regalos App Beta - Android Testing!',
         html: `
 <!DOCTYPE html>
 <html>
@@ -290,7 +290,7 @@ Geburtstage unvergesslich machen, eine Feier nach der anderen 🎂
 </head>
 <body>
   <div class="header">
-    <h1>🎁 Welcome to RegaloApp Beta!</h1>
+    <h1>🎁 Welcome to Regalos App Beta!</h1>
   </div>
   
   <div class="content">
@@ -301,13 +301,13 @@ Geburtstage unvergesslich machen, eine Feier nach der anderen 🎂
     <p><strong>What happens next?</strong></p>
     <ul>
       <li><span class="emoji">📧</span> You'll receive an email with Google Play Beta access link within 24-48 hours</li>
-      <li><span class="emoji">📱</span> Join the beta program and download RegaloApp from Google Play</li>
+      <li><span class="emoji">📱</span> Join the beta program and download Regalos App from Google Play</li>
       <li><span class="emoji">🎯</span> Start organizing birthdays and coordinating gifts!</li>
       <li><span class="emoji">💬</span> Share your feedback directly through the app or reply to our emails</li>
     </ul>
     
     <p><strong>Your feedback matters!</strong></p>
-    <p>As a beta tester, you're helping shape the future of RegaloApp. We want to hear about:</p>
+    <p>As a beta tester, you're helping shape the future of Regalos App. We want to hear about:</p>
     <ul>
       <li>Features you love ❤️</li>
       <li>Things that could be improved 🔧</li>
@@ -319,10 +319,10 @@ Geburtstage unvergesslich machen, eine Feier nach der anderen 🎂
   </div>
   
   <div class="footer">
-    <p><strong>RegaloApp Team</strong></p>
+    <p><strong>Regalos App Team</strong></p>
     <p>Making birthdays memorable, one celebration at a time 🎂</p>
     <p style="font-size: 12px; color: #999; margin-top: 20px;">
-      You're receiving this email because you signed up for RegaloApp Beta Testing.
+      You're receiving this email because you signed up for Regalos App Beta Testing.
     </p>
   </div>
 </body>
@@ -335,12 +335,12 @@ Thank you for joining our Android Beta Testing program! We're thrilled to have y
 
 What happens next?
 - You'll receive an email with Google Play Beta access link within 24-48 hours
-- Join the beta program and download RegaloApp from Google Play
+- Join the beta program and download Regalos App from Google Play
 - Start organizing birthdays and coordinating gifts!
 - Share your feedback directly through the app or reply to our emails
 
 Your feedback matters!
-As a beta tester, you're helping shape the future of RegaloApp. We want to hear about:
+As a beta tester, you're helping shape the future of Regalos App. We want to hear about:
 - Features you love
 - Things that could be improved
 - Bugs or issues you encounter
@@ -348,12 +348,12 @@ As a beta tester, you're helping shape the future of RegaloApp. We want to hear 
 
 Feel free to reply to this email anytime with your thoughts, questions, or feedback. We read every message!
 
-RegaloApp Team
+Regalos App Team
 Making birthdays memorable, one celebration at a time 🎂
         `
       },
       es: {
-        subject: '🎉 Bienvenido a RegaloApp Beta - ¡Pruebas en Android!',
+        subject: '🎉 Bienvenido a Regalos App Beta - ¡Pruebas en Android!',
         html: `
 <!DOCTYPE html>
 <html>
@@ -372,7 +372,7 @@ Making birthdays memorable, one celebration at a time 🎂
 </head>
 <body>
   <div class="header">
-    <h1>🎁 ¡Bienvenido a RegaloApp Beta!</h1>
+    <h1>🎁 ¡Bienvenido a Regalos App Beta!</h1>
   </div>
   
   <div class="content">
@@ -383,13 +383,13 @@ Making birthdays memorable, one celebration at a time 🎂
     <p><strong>¿Qué sigue ahora?</strong></p>
     <ul>
       <li><span class="emoji">📧</span> Recibirás un email con el enlace de acceso a Google Play Beta en 24-48 horas</li>
-      <li><span class="emoji">📱</span> Únete al programa beta y descarga RegaloApp desde Google Play</li>
+      <li><span class="emoji">📱</span> Únete al programa beta y descarga Regalos App desde Google Play</li>
       <li><span class="emoji">🎯</span> ¡Empieza a organizar cumpleaños y coordinar regalos!</li>
       <li><span class="emoji">💬</span> Comparte tu feedback directamente en la app o respondiendo a nuestros emails</li>
     </ul>
     
     <p><strong>¡Tu feedback es importante!</strong></p>
-    <p>Como beta tester, estás ayudando a dar forma al futuro de RegaloApp. Queremos saber sobre:</p>
+    <p>Como beta tester, estás ayudando a dar forma al futuro de Regalos App. Queremos saber sobre:</p>
     <ul>
       <li>Funciones que te encantan ❤️</li>
       <li>Cosas que podrían mejorarse 🔧</li>
@@ -401,10 +401,10 @@ Making birthdays memorable, one celebration at a time 🎂
   </div>
   
   <div class="footer">
-    <p><strong>Equipo RegaloApp</strong></p>
+    <p><strong>Equipo Regalos App</strong></p>
     <p>Haciendo los cumpleaños memorables, una celebración a la vez 🎂</p>
     <p style="font-size: 12px; color: #999; margin-top: 20px;">
-      Recibes este email porque te registraste en RegaloApp Beta Testing.
+      Recibes este email porque te registraste en Regalos App Beta Testing.
     </p>
   </div>
 </body>
@@ -417,12 +417,12 @@ Making birthdays memorable, one celebration at a time 🎂
 
 ¿Qué sigue ahora?
 - Recibirás un email con el enlace de acceso a Google Play Beta en 24-48 horas
-- Únete al programa beta y descarga RegaloApp desde Google Play
+- Únete al programa beta y descarga Regalos App desde Google Play
 - ¡Empieza a organizar cumpleaños y coordinar regalos!
 - Comparte tu feedback directamente en la app o respondiendo a nuestros emails
 
 ¡Tu feedback es importante!
-Como beta tester, estás ayudando a dar forma al futuro de RegaloApp. Queremos saber sobre:
+Como beta tester, estás ayudando a dar forma al futuro de Regalos App. Queremos saber sobre:
 - Funciones que te encantan
 - Cosas que podrían mejorarse
 - Bugs o problemas que encuentres
@@ -430,12 +430,12 @@ Como beta tester, estás ayudando a dar forma al futuro de RegaloApp. Queremos s
 
 Siéntete libre de responder a este email en cualquier momento con tus pensamientos, preguntas o feedback. ¡Leemos cada mensaje!
 
-Equipo RegaloApp
+Equipo Regalos App
 Haciendo los cumpleaños memorables, una celebración a la vez 🎂
         `
       },
       de: {
-        subject: '🎉 Willkommen bei RegaloApp Beta - Android Testing!',
+        subject: '🎉 Willkommen bei Regalos App Beta - Android Testing!',
         html: `
 <!DOCTYPE html>
 <html>
@@ -454,7 +454,7 @@ Haciendo los cumpleaños memorables, una celebración a la vez 🎂
 </head>
 <body>
   <div class="header">
-    <h1>🎁 Willkommen bei RegaloApp Beta!</h1>
+    <h1>🎁 Willkommen bei Regalos App Beta!</h1>
   </div>
   
   <div class="content">
@@ -465,13 +465,13 @@ Haciendo los cumpleaños memorables, una celebración a la vez 🎂
     <p><strong>Was passiert als Nächstes?</strong></p>
     <ul>
       <li><span class="emoji">📧</span> Du erhältst innerhalb von 24-48 Stunden eine E-Mail mit dem Google Play Beta-Zugangslink</li>
-      <li><span class="emoji">📱</span> Tritt dem Beta-Programm bei und lade RegaloApp aus Google Play herunter</li>
+      <li><span class="emoji">📱</span> Tritt dem Beta-Programm bei und lade Regalos App aus Google Play herunter</li>
       <li><span class="emoji">🎯</span> Beginne mit der Organisation von Geburtstagen und der Koordination von Geschenken!</li>
       <li><span class="emoji">💬</span> Teile dein Feedback direkt über die App oder antworte auf unsere E-Mails</li>
     </ul>
     
     <p><strong>Dein Feedback ist wichtig!</strong></p>
-    <p>Als Beta-Tester hilfst du, die Zukunft von RegaloApp zu gestalten. Wir möchten hören über:</p>
+    <p>Als Beta-Tester hilfst du, die Zukunft von Regalos App zu gestalten. Wir möchten hören über:</p>
     <ul>
       <li>Funktionen, die du liebst ❤️</li>
       <li>Dinge, die verbessert werden könnten 🔧</li>
@@ -483,10 +483,10 @@ Haciendo los cumpleaños memorables, una celebración a la vez 🎂
   </div>
   
   <div class="footer">
-    <p><strong>RegaloApp Team</strong></p>
+    <p><strong>Regalos App Team</strong></p>
     <p>Geburtstage unvergesslich machen, eine Feier nach der anderen 🎂</p>
     <p style="font-size: 12px; color: #999; margin-top: 20px;">
-      Du erhältst diese E-Mail, weil du dich für RegaloApp Beta Testing angemeldet hast.
+      Du erhältst diese E-Mail, weil du dich für Regalos App Beta Testing angemeldet hast.
     </p>
   </div>
 </body>
@@ -499,12 +499,12 @@ Vielen Dank, dass du unserem Android Beta-Testing-Programm beigetreten bist! Wir
 
 Was passiert als Nächstes?
 - Du erhältst innerhalb von 24-48 Stunden eine E-Mail mit dem Google Play Beta-Zugangslink
-- Tritt dem Beta-Programm bei und lade RegaloApp aus Google Play herunter
+- Tritt dem Beta-Programm bei und lade Regalos App aus Google Play herunter
 - Beginne mit der Organisation von Geburtstagen und der Koordination von Geschenken!
 - Teile dein Feedback direkt über die App oder antworte auf unsere E-Mails
 
 Dein Feedback ist wichtig!
-Als Beta-Tester hilfst du, die Zukunft von RegaloApp zu gestalten. Wir möchten hören über:
+Als Beta-Tester hilfst du, die Zukunft von Regalos App zu gestalten. Wir möchten hören über:
 - Funktionen, die du liebst
 - Dinge, die verbessert werden könnten
 - Bugs oder Probleme, die du findest
@@ -512,7 +512,7 @@ Als Beta-Tester hilfst du, die Zukunft von RegaloApp zu gestalten. Wir möchten 
 
 Antworte jederzeit auf diese E-Mail mit deinen Gedanken, Fragen oder Feedback. Wir lesen jede Nachricht!
 
-RegaloApp Team
+Regalos App Team
 Geburtstage unvergesslich machen, eine Feier nach der anderen 🎂
         `
       }

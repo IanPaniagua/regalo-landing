@@ -127,7 +127,7 @@ export const Hero: React.FC = () => {
                 <div className="relative aspect-[9/19.5] rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-neutral-900">
                   <Image
                     src="/calendar.png"
-                    alt="RegaloApp Calendar"
+                    alt="Regalos App Calendar"
                     fill
                     className="object-cover"
                     priority

@@ -6,7 +6,7 @@ export const translations = {
     hero: {
       title: "Never Forget Another Birthday",
       subtitle: "All your friends' birthdays in one place. Smart reminders so you're always prepared.",
-      description: "Stop relying on scattered notes and social media notifications. RegaloApp centralizes all birthdays, sends you timely reminders, and helps you coordinate perfect gifts with friends.",
+      description: "Stop relying on scattered notes and social media notifications. Regalos App centralizes all birthdays, sends you timely reminders, and helps you coordinate perfect gifts with friends.",
       downloadNow: "Download Now",
       seeHowItWorks: "See How It Works",
       availableOn: "Available on iOS & Android",
@@ -15,7 +15,7 @@ export const translations = {
     // Features
     features: {
       sectionTitle: "Everything You Need to Celebrate",
-      sectionSubtitle: "RegaloApp combines smart organization, social connections, and group coordination in one beautiful app.",
+      sectionSubtitle: "Regalos App combines smart organization, social connections, and group coordination in one beautiful app.",
       calendar: {
         tag: "Calendar",
         title: "Smart Birthday Calendar",
@@ -61,13 +61,13 @@ export const translations = {
 
     // CTA Section
     cta: {
-      title: "Help Us Perfect RegaloApp",
+      title: "Help Us Perfect Regalos App",
       subtitle: "We're looking for beta testers to help shape the future of birthday celebrations",
       description: "Get early access to all features, influence development, and be part of our founding community.",
       benefits: {
         title: "Beta Tester Benefits:",
         benefit1: "Early access to all features",
-        benefit1Desc: "Be among the first to use all RegaloApp features",
+        benefit1Desc: "Be among the first to use all Regalos App features",
         benefit2: "Direct line to the development team",
         benefit2Desc: "Your feedback shapes the app's future",
         benefit3: "Influence future features",
@@ -87,7 +87,7 @@ export const translations = {
     // Waitlist
     waitlist: {
       title: "Join the Waitlist",
-      subtitle: "RegaloApp is coming soon and we're looking for early adopters!",
+      subtitle: "Regalos App is coming soon and we're looking for early adopters!",
       description: "Get notified as soon as the app officially launches and be among the first to experience Regalo.",
       nameLabel: "Your Name",
       namePlaceholder: "Your name",
@@ -104,14 +104,14 @@ export const translations = {
       errorInvalidEmail: "Please enter a valid email",
       errorGeneric: "Something went wrong. Please try again.",
       successTitle: "You're on the list!",
-      successMessage: "We've added you to the waitlist. We'll send you an email as soon as RegaloApp is ready for you.",
+      successMessage: "We've added you to the waitlist. We'll send you an email as soon as Regalos App is ready for you.",
       backHome: "Back to Home",
     },
 
     // Beta
     beta: {
       title: "Join the Beta Testing Program",
-      subtitle: "RegaloApp is live and we're looking for founding members!",
+      subtitle: "Regalos App is live and we're looking for founding members!",
       description: "Get immediate access to the app, help shape its future, and become part of our exclusive founding community. Limited spots available.",
       nameLabel: "Your Name",
       namePlaceholder: "Your name",
@@ -127,7 +127,7 @@ export const translations = {
       errorSelectPlatform: "Please select your platform",
       errorInvalidEmail: "Please enter a valid email",
       errorGeneric: "Something went wrong. Please try again.",
-      successTitle: "Welcome to RegaloApp Beta!",
+      successTitle: "Welcome to Regalos App Beta!",
       successMessage: "Check your email for download instructions and beta access details. You're now part of our founding community!",
       backHome: "Back to Home",
     },
@@ -178,7 +178,7 @@ export const translations = {
     hero: {
       title: "Nunca Olvides Otro Cumpleaños",
       subtitle: "Todos los cumpleaños de tus amigos en un solo lugar. Recordatorios inteligentes para estar siempre preparado.",
-      description: "Deja de depender de notas dispersas y notificaciones de redes sociales. RegaloApp centraliza todos los cumpleaños, te envía recordatorios oportunos y te ayuda a coordinar regalos perfectos con amigos.",
+      description: "Deja de depender de notas dispersas y notificaciones de redes sociales. Regalos App centraliza todos los cumpleaños, te envía recordatorios oportunos y te ayuda a coordinar regalos perfectos con amigos.",
       downloadNow: "Descargar Ahora",
       seeHowItWorks: "Ver Cómo Funciona",
       availableOn: "Disponible en iOS y Android",
@@ -187,7 +187,7 @@ export const translations = {
     // Features
     features: {
       sectionTitle: "Todo lo que Necesitas para Celebrar",
-      sectionSubtitle: "RegaloApp combina organización inteligente, conexiones sociales y coordinación de regalos en una app hermosa.",
+      sectionSubtitle: "Regalos App combina organización inteligente, conexiones sociales y coordinación de regalos en una app hermosa.",
       calendar: {
         tag: "Calendario",
         title: "Calendario Inteligente de Cumpleaños",
@@ -233,13 +233,13 @@ export const translations = {
 
     // CTA Section
     cta: {
-      title: "Ayúdanos a Perfeccionar RegaloApp",
+      title: "Ayúdanos a Perfeccionar Regalos App",
       subtitle: "Buscamos beta testers para ayudar a dar forma al futuro de las celebraciones de cumpleaños",
       description: "Obtén acceso anticipado a todas las funciones, influye en el desarrollo y sé parte de nuestra comunidad fundadora.",
       benefits: {
         title: "Beneficios del Beta Tester:",
         benefit1: "Acceso anticipado a todas las funciones",
-        benefit1Desc: "Sé de los primeros en usar todas las funciones de RegaloApp",
+        benefit1Desc: "Sé de los primeros en usar todas las funciones de Regalos App",
         benefit2: "Línea directa con el equipo de desarrollo",
         benefit2Desc: "Tu feedback da forma al futuro de la app",
         benefit3: "Influye en futuras funciones",
@@ -259,7 +259,7 @@ export const translations = {
     // Waitlist
     waitlist: {
       title: "Únete a la Lista de Espera",
-      subtitle: "¡RegaloApp estará disponible pronto y buscamos a nuestros primeros usuarios!",
+      subtitle: "¡Regalos App estará disponible pronto y buscamos a nuestros primeros usuarios!",
       description: "Recibe una notificación en cuanto la app se lance oficialmente y sé uno de los primeros en experimentar Regalo.",
       nameLabel: "Tu Nombre",
       namePlaceholder: "Tu nombre",
@@ -276,14 +276,14 @@ export const translations = {
       errorInvalidEmail: "Por favor introduce un correo válido",
       errorGeneric: "Algo salió mal. Por favor intenta de nuevo.",
       successTitle: "¡Estás en la lista!",
-      successMessage: "Te hemos añadido a la lista de espera. Te enviaremos un correo en cuanto RegaloApp esté lista para ti.",
+      successMessage: "Te hemos añadido a la lista de espera. Te enviaremos un correo en cuanto Regalos App esté lista para ti.",
       backHome: "Volver al Inicio",
     },
 
     // Beta
     beta: {
       title: "Únete al Programa Beta",
-      subtitle: "¡RegaloApp está en vivo y buscamos miembros fundadores!",
+      subtitle: "¡Regalos App está en vivo y buscamos miembros fundadores!",
       description: "Obtén acceso inmediato a la app, ayuda a dar forma a su futuro y únete a nuestra exclusiva comunidad fundadora. Plazas limitadas.",
       nameLabel: "Tu Nombre",
       namePlaceholder: "Tu nombre",
@@ -299,7 +299,7 @@ export const translations = {
       errorSelectPlatform: "Por favor selecciona tu plataforma",
       errorInvalidEmail: "Por favor introduce un correo válido",
       errorGeneric: "Algo salió mal. Por favor intenta de nuevo.",
-      successTitle: "¡Bienvenido a la Beta de RegaloApp!",
+      successTitle: "¡Bienvenido a la Beta de Regalos App!",
       successMessage: "Revisa tu correo para las instrucciones de descarga y detalles de acceso a la beta. ¡Ahora eres parte de nuestra comunidad fundadora!",
       backHome: "Volver al Inicio",
     },
@@ -350,7 +350,7 @@ export const translations = {
     hero: {
       title: "Vergiss Nie Wieder Einen Geburtstag",
       subtitle: "Alle Geburtstage deiner Freunde an einem Ort. Intelligente Erinnerungen, damit du immer vorbereitet bist.",
-      description: "Schluss mit verstreuten Notizen und Social-Media-Benachrichtigungen. RegaloApp zentralisiert alle Geburtstage, sendet dir rechtzeitige Erinnerungen und hilft dir, perfekte Geschenke mit Freunden zu koordinieren.",
+      description: "Schluss mit verstreuten Notizen und Social-Media-Benachrichtigungen. Regalos App zentralisiert alle Geburtstage, sendet dir rechtzeitige Erinnerungen und hilft dir, perfekte Geschenke mit Freunden zu koordinieren.",
       downloadNow: "Jetzt Herunterladen",
       seeHowItWorks: "So Funktioniert's",
       availableOn: "Verfügbar für iOS & Android",
@@ -359,7 +359,7 @@ export const translations = {
     // Features
     features: {
       sectionTitle: "Alles, Was Du Zum Feiern Brauchst",
-      sectionSubtitle: "RegaloApp kombiniert intelligente Organisation, soziale Verbindungen und Geschenkkoordination in einer schönen App.",
+      sectionSubtitle: "Regalos App kombiniert intelligente Organisation, soziale Verbindungen und Geschenkkoordination in einer schönen App.",
       calendar: {
         tag: "Kalender",
         title: "Intelligenter Geburtstags-Kalender",
@@ -405,13 +405,13 @@ export const translations = {
 
     // CTA Section
     cta: {
-      title: "Hilf Uns, RegaloApp Zu Perfektionieren",
+      title: "Hilf Uns, Regalos App Zu Perfektionieren",
       subtitle: "Wir suchen Beta-Tester, die die Zukunft von Geburtstagsfeiern mitgestalten",
       description: "Erhalte frühen Zugang zu allen Funktionen, beeinflusse die Entwicklung und werde Teil unserer Gründer-Community.",
       benefits: {
         title: "Beta-Tester Vorteile:",
         benefit1: "Früher Zugang zu allen Funktionen",
-        benefit1Desc: "Gehöre zu den Ersten, die alle RegaloApp-Funktionen nutzen",
+        benefit1Desc: "Gehöre zu den Ersten, die alle Regalos App-Funktionen nutzen",
         benefit2: "Direkter Draht zum Entwicklungsteam",
         benefit2Desc: "Dein Feedback gestaltet die Zukunft der App",
         benefit3: "Einfluss auf zukünftige Funktionen",
@@ -431,7 +431,7 @@ export const translations = {
     // Waitlist
     waitlist: {
       title: "Der Warteliste Beitreten",
-      subtitle: "RegaloApp kommt bald und wir suchen Early Adopters!",
+      subtitle: "Regalos App kommt bald und wir suchen Early Adopters!",
       description: "Werden Sie benachrichtigt, sobald die App offiziell startet und gehören Sie zu den Ersten, die Regalo erleben.",
       nameLabel: "Ihr Name",
       namePlaceholder: "Ihr Name",
@@ -448,14 +448,14 @@ export const translations = {
       errorInvalidEmail: "Bitte geben Sie eine gültige E-Mail ein",
       errorGeneric: "Etwas ist schief gelaufen. Bitte versuchen Sie es erneut.",
       successTitle: "Sie stehen auf der Liste!",
-      successMessage: "Wir haben Sie auf die Warteliste gesetzt. Wir senden Ihnen eine E-Mail, sobald RegaloApp für Sie bereit ist.",
+      successMessage: "Wir haben Sie auf die Warteliste gesetzt. Wir senden Ihnen eine E-Mail, sobald Regalos App für Sie bereit ist.",
       backHome: "Zurück zur Startseite",
     },
 
     // Beta
     beta: {
       title: "Dem Beta-Programm Beitreten",
-      subtitle: "RegaloApp ist live und wir suchen Gründungsmitglieder!",
+      subtitle: "Regalos App ist live und wir suchen Gründungsmitglieder!",
       description: "Erhalten Sie sofortigen Zugang zur App, helfen Sie, ihre Zukunft zu gestalten, und werden Sie Teil unserer exklusiven Entwickler-Community. Begrenzte Plätze.",
       nameLabel: "Ihr Name",
       namePlaceholder: "Ihr Name",
@@ -471,7 +471,7 @@ export const translations = {
       errorSelectPlatform: "Bitte wählen Sie Ihre Plattform",
       errorInvalidEmail: "Bitte geben Sie eine gültige E-Mail ein",
       errorGeneric: "Etwas ist schief gelaufen. Bitte versuchen Sie es erneut.",
-      successTitle: "Willkommen in der RegaloApp Beta!",
+      successTitle: "Willkommen in der Regalos App Beta!",
       successMessage: "Überprüfen Sie Ihre E-Mails auf Download-Anweisungen und Details zum Beta-Zugang. Sie sind jetzt Teil unserer Community!",
       backHome: "Zurück zur Startseite",
     },

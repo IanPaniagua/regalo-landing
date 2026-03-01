@@ -6,7 +6,7 @@ export interface LogoProps {
    * @default "md"
    */
   size?: "sm" | "md" | "lg";
-  
+
   /**
    * Additional CSS classes
    */
@@ -14,7 +14,7 @@ export interface LogoProps {
 }
 
 /**
- * Regalo App Logo component
+ * Regalos App Logo component
  * Simple gift box icon with brand name
  * 
  * @example
@@ -28,13 +28,13 @@ export const Logo: React.FC<LogoProps> = ({ size = "md", className = "" }) => {
     md: "h-8",
     lg: "h-10",
   };
-  
+
   const textSizes = {
     sm: "text-lg",
     md: "text-xl",
     lg: "text-2xl",
   };
-  
+
   return (
     <div className={`flex items-center gap-2 ${className}`} data-analytics-id="logo">
       {/* Gift box icon */}
@@ -43,7 +43,7 @@ export const Logo: React.FC<LogoProps> = ({ size = "md", className = "" }) => {
         viewBox="0 0 24 24"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        aria-label="Regalo App Logo"
+        aria-label="Regalos App Logo"
       >
         <rect x="3" y="10" width="18" height="11" rx="1" stroke="currentColor" strokeWidth="2" />
         <path d="M3 10h18V8a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v2Z" stroke="currentColor" strokeWidth="2" />
@@ -54,9 +54,9 @@ export const Logo: React.FC<LogoProps> = ({ size = "md", className = "" }) => {
           strokeWidth="2"
         />
       </svg>
-      
+
       <span className={`font-display font-semibold tracking-wide ${textSizes[size]}`}>
-        REGALO
+        REGALOS
       </span>
     </div>
   );

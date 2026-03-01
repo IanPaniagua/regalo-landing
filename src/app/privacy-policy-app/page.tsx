@@ -7,7 +7,7 @@ import Link from "next/link";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 /**
- * Página de Política de Privacidad para la app móvil RegaloApp
+ * Página de Política de Privacidad para la app móvil Regalos App
  * - Español cuando language === 'es'
  * - Inglés cuando language es 'en' o 'de'
  */
@@ -26,8 +26,8 @@ export default function MobilePrivacyPolicyPage() {
             </div>
             <h1 className="font-display text-4xl sm:text-5xl font-bold text-neutral-900 mb-4">
               {isSpanish
-                ? "Política de Privacidad – RegaloApp"
-                : "Privacy Policy – RegaloApp"}
+                ? "Política de Privacidad – Regalos App"
+                : "Privacy Policy – Regalos App"}
             </h1>
             <p className="font-sans text-neutral-600">
               {isSpanish
@@ -68,7 +68,7 @@ export default function MobilePrivacyPolicyPage() {
                     2. Datos que recopilamos
                   </h2>
                   <p className="font-sans text-neutral-700 leading-relaxed mb-4">
-                    En RegaloApp recopilamos y tratamos los siguientes tipos de datos:
+                    En Regalos App recopilamos y tratamos los siguientes tipos de datos:
                   </p>
 
                   <h3 className="font-display text-xl font-semibold text-neutral-900 mb-3 mt-4">
@@ -129,7 +129,7 @@ export default function MobilePrivacyPolicyPage() {
                     Usamos tus datos para:
                   </p>
                   <ul className="font-sans text-neutral-700 leading-relaxed list-disc list-inside space-y-2 mb-4">
-                    <li>Crear y gestionar tu cuenta en RegaloApp.</li>
+                    <li>Crear y gestionar tu cuenta en Regalos App.</li>
                     <li>Permitir el inicio de sesión y la autenticación segura.</li>
                     <li>
                       Mostrar y gestionar tus cumpleaños, conexiones y recordatorios dentro del calendario.
@@ -154,7 +154,7 @@ export default function MobilePrivacyPolicyPage() {
                   </p>
                   <ul className="font-sans text-neutral-700 leading-relaxed list-disc list-inside space-y-2 mb-4">
                     <li>
-                      <strong>Ejecución de un contrato:</strong> para poder prestarte el servicio de RegaloApp
+                      <strong>Ejecución de un contrato:</strong> para poder prestarte el servicio de Regalos App
                       (art. 6.1.b RGPD).
                     </li>
                     <li>
@@ -174,7 +174,7 @@ export default function MobilePrivacyPolicyPage() {
                     5. Servicios de terceros y ubicación de los datos
                   </h2>
                   <p className="font-sans text-neutral-700 leading-relaxed mb-4">
-                    RegaloApp utiliza <strong>Firebase</strong> (Google LLC / Google Cloud Platform) como proveedor
+                    Regalos App utiliza <strong>Firebase</strong> (Google LLC / Google Cloud Platform) como proveedor
                     principal de backend:
                   </p>
                   <ul className="font-sans text-neutral-700 leading-relaxed list-disc list-inside space-y-1 mb-4">
@@ -204,7 +204,7 @@ export default function MobilePrivacyPolicyPage() {
                     Conservaremos tus datos personales:
                   </p>
                   <ul className="font-sans text-neutral-700 leading-relaxed list-disc list-inside space-y-2 mb-4">
-                    <li>Mientras mantengas activa tu cuenta en RegaloApp.</li>
+                    <li>Mientras mantengas activa tu cuenta en Regalos App.</li>
                     <li>
                       Durante el tiempo necesario para cumplir con obligaciones legales o resolver posibles
                       responsabilidades.
@@ -269,7 +269,7 @@ export default function MobilePrivacyPolicyPage() {
                     9. Menores de edad
                   </h2>
                   <p className="font-sans text-neutral-700 leading-relaxed mb-4">
-                    RegaloApp no está dirigida a menores de 16 años. Si detecto que se han recopilado datos de un
+                    Regalos App no está dirigida a menores de 16 años. Si detecto que se han recopilado datos de un
                     menor sin el consentimiento correspondiente, procederé a eliminar dicha información.
                   </p>
                 </section>
@@ -334,7 +334,7 @@ export default function MobilePrivacyPolicyPage() {
                     2. Data We Collect
                   </h2>
                   <p className="font-sans text-neutral-700 leading-relaxed mb-4">
-                    In RegaloApp we collect and process the following types of data:
+                    In Regalos App we collect and process the following types of data:
                   </p>
 
                   <h3 className="font-display text-xl font-semibold text-neutral-900 mb-3 mt-4">
@@ -395,7 +395,7 @@ export default function MobilePrivacyPolicyPage() {
                     We use your data to:
                   </p>
                   <ul className="font-sans text-neutral-700 leading-relaxed list-disc list-inside space-y-2 mb-4">
-                    <li>Create and manage your RegaloApp account.</li>
+                    <li>Create and manage your Regalos App account.</li>
                     <li>Allow you to log in and authenticate securely.</li>
                     <li>Display and manage your birthdays, connections and reminders in the calendar.</li>
                     <li>
@@ -418,7 +418,7 @@ export default function MobilePrivacyPolicyPage() {
                   </p>
                   <ul className="font-sans text-neutral-700 leading-relaxed list-disc list-inside space-y-2 mb-4">
                     <li>
-                      <strong>Performance of a contract:</strong> to provide you with the RegaloApp service (Art.
+                      <strong>Performance of a contract:</strong> to provide you with the Regalos App service (Art.
                       6(1)(b) GDPR).
                     </li>
                     <li>
@@ -437,7 +437,7 @@ export default function MobilePrivacyPolicyPage() {
                     5. Third-Party Services and Data Location
                   </h2>
                   <p className="font-sans text-neutral-700 leading-relaxed mb-4">
-                    RegaloApp uses <strong>Firebase</strong> (Google LLC / Google Cloud Platform) as its main backend
+                    Regalos App uses <strong>Firebase</strong> (Google LLC / Google Cloud Platform) as its main backend
                     provider:
                   </p>
                   <ul className="font-sans text-neutral-700 leading-relaxed list-disc list-inside space-y-1 mb-4">
@@ -467,7 +467,7 @@ export default function MobilePrivacyPolicyPage() {
                     We keep your personal data:
                   </p>
                   <ul className="font-sans text-neutral-700 leading-relaxed list-disc list-inside space-y-2 mb-4">
-                    <li>For as long as your RegaloApp account remains active.</li>
+                    <li>For as long as your Regalos App account remains active.</li>
                     <li>
                       For the time necessary to comply with legal obligations or resolve potential liabilities.
                     </li>
@@ -531,7 +531,7 @@ export default function MobilePrivacyPolicyPage() {
                     9. Minors
                   </h2>
                   <p className="font-sans text-neutral-700 leading-relaxed mb-4">
-                    RegaloApp is not intended for children under 16. If I become aware that data has been collected
+                    Regalos App is not intended for children under 16. If I become aware that data has been collected
                     from a minor without the required consent, I will proceed to delete such information.
                   </p>
                 </section>

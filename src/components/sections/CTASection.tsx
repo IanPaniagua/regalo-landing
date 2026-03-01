@@ -99,7 +99,7 @@ export const CTASection: React.FC = () => {
               <div className="relative aspect-square md:aspect-[4/3] w-full">
                 <Image
                   src="/together.png"
-                  alt="RegaloApp Community"
+                  alt="Regalos App Community"
                   fill
                   className="object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-500"
                   sizes="(max-w-width: 768px) 100vw, 50vw"

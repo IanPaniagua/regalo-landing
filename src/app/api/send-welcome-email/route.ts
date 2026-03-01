@@ -53,7 +53,7 @@ export async function POST(request: NextRequest) {
 
     // Send welcome email to user
     const userEmailResult = await resend.emails.send({
-      from: 'RegaloApp <onboarding@resend.dev>',
+      from: 'Regalos App <onboarding@resend.dev>',
       to: email,
       subject: emailTemplate.subject,
       html: emailTemplate.html,
@@ -64,7 +64,7 @@ export async function POST(request: NextRequest) {
 
     // Send notification to admin
     const adminEmailResult = await resend.emails.send({
-      from: 'RegaloApp <onboarding@resend.dev>',
+      from: 'Regalos App <onboarding@resend.dev>',
       to: adminEmail,
       subject: `🎯 New Beta Tester: ${name}`,
       html: `

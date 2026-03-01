@@ -27,13 +27,13 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Regalo App - Never Miss a Special Date",
-  description: "Keep track of important dates and give gifts on time with Regalo App. Create your profile, know your loved ones' preferences, and organize gifts easily.",
+  title: "Regalos App - Never Miss a Special Date",
+  description: "Keep track of important dates and give gifts on time with Regalos App. Create your profile, know your loved ones' preferences, and organize gifts easily.",
   keywords: ["gifts", "reminders", "special dates", "gift organization", "birthdays"],
-  authors: [{ name: "Regalo App" }],
+  authors: [{ name: "Regalos App" }],
   openGraph: {
-    title: "Regalo App - Never Miss a Special Date",
-    description: "Keep track of important dates and give gifts on time with Regalo App.",
+    title: "Regalos App - Never Miss a Special Date",
+    description: "Keep track of important dates and give gifts on time with Regalos App.",
     type: "website",
   },
 };

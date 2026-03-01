@@ -6,7 +6,7 @@ import { Footer } from "@/components/sections/Footer";
 
 /**
  * Home page component
- * Main landing page for Regalo App
+ * Main landing page for Regalos App
  * 
  * Structure:
  * - Header: Navigation with logo
