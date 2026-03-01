@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const n8nWebhookUrl = process.env.N8N_WEBHOOK_URL;
+    const n8nWebhookUrl = process.env.N8N_WEBHOOK_URL_BETA_SIGNUP;
 
     if (!n8nWebhookUrl) {
       console.error('❌ N8N_WEBHOOK_URL environment variable is not set');
