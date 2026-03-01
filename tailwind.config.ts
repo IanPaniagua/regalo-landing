@@ -42,6 +42,20 @@ const config: Config = {
         display: ["var(--font-cormorant)", "serif"],
         sans: ["var(--font-inter)", "sans-serif"],
       },
+      animation: {
+        'shimmer': 'shimmer 2.5s infinite linear',
+        'pulse-glow': 'pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+      },
+      keyframes: {
+        'shimmer': {
+          '0%': { backgroundPosition: '0% 50%' },
+          '100%': { backgroundPosition: '200% 50%' },
+        },
+        'pulse-glow': {
+          '0%, 100%': { opacity: '1', boxShadow: '0 0 20px rgba(91,159,237,0.4)', transform: 'scale(1)' },
+          '50%': { opacity: '0.9', boxShadow: '0 0 30px rgba(91,159,237,0.7)', transform: 'scale(1.02)' },
+        }
+      }
     },
   },
   plugins: [],

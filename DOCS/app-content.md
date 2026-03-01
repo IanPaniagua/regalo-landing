@@ -1,6 +1,6 @@
 aqui esta explicado lo que podemos poner de infor sobre la app en nuestra landing. 
 
-# RegaloApp - Landing Page Content
+# RegalosApp - Landing Page Content
 
 ## 🎯 Hero Section
 
@@ -165,10 +165,10 @@ Multilingual support makes it perfect for global teams and multicultural familie
 
 ---
 
-## 🌟 What Makes RegaloApp Different
+## 🌟 What Makes RegalosApp Different
 
 ### Smart Duplicate Prevention
-Unlike other apps, RegaloApp automatically detects when a manually added person joins the platform and merges their information. No duplicate entries, ever.
+Unlike other apps, RegalosApp automatically detects when a manually added person joins the platform and merges their information. No duplicate entries, ever.
 
 ### True Group Coordination
 Not just a reminder app - RegaloApp lets you actually coordinate group gifts with chat, payment tracking, and automatic cost splitting.

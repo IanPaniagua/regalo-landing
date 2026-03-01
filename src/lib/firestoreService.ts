@@ -1,12 +1,12 @@
 import { firestore } from './firebase';
-import { 
-  collection, 
-  addDoc, 
-  getDocs, 
+import {
+  collection,
+  addDoc,
+  getDocs,
   doc,
   updateDoc,
-  query, 
-  orderBy, 
+  query,
+  orderBy,
   limit as firestoreLimit,
   serverTimestamp,
   Timestamp,
@@ -31,10 +31,10 @@ export const saveQuestionnaireToFirestore = async (
   }
 
   try {
-    const isDevelopment = process.env.NODE_ENV === 'development' || 
-                         window.location.hostname === 'localhost' ||
-                         window.location.hostname === '127.0.0.1';
-    
+    const isDevelopment = process.env.NODE_ENV === 'development' ||
+      window.location.hostname === 'localhost' ||
+      window.location.hostname === '127.0.0.1';
+
     const docRef = await addDoc(collection(firestore, 'questionnaire_responses'), {
       responses,
       metadata: {
@@ -90,12 +90,12 @@ export const logAnalyticsEvent = async (
  */
 function getSessionId(): string {
   let sessionId = sessionStorage.getItem('regalo_session_id');
-  
+
   if (!sessionId) {
     sessionId = `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
     sessionStorage.setItem('regalo_session_id', sessionId);
   }
-  
+
   return sessionId;
 }
 
@@ -110,7 +110,7 @@ export const saveBetaTester = async (
   source: 'questionnaire' | 'landing' = 'landing'
 ): Promise<string | null> => {
   console.log('🔵 saveBetaTester called with:', { email, name, platform, language, source });
-  
+
   if (typeof window === 'undefined' || !firestore) {
     console.warn('❌ Firestore not available');
     return null;
@@ -149,14 +149,14 @@ export const saveBetaTester = async (
 };
 
 /**
- * Save waitlist signup to Firestore (legacy)
+ * Save waitlist signup to Firestore
  */
 export const saveWaitlistSignup = async (
   email: string,
   name: string,
-  source: 'questionnaire' | 'landing' = 'questionnaire',
-  platform?: string,
-  language?: string
+  platform: string,
+  language: string,
+  source: 'questionnaire' | 'landing' = 'landing'
 ): Promise<string | null> => {
   if (typeof window === 'undefined' || !firestore) {
     console.warn('Firestore not available');
@@ -168,8 +168,8 @@ export const saveWaitlistSignup = async (
       email: email.toLowerCase().trim(),
       name: name.trim(),
       source,
-      platform: platform || 'not-specified',
-      language: language || 'en',
+      platform,
+      language,
       metadata: {
         userAgent: navigator.userAgent,
         language: navigator.language,
@@ -259,17 +259,17 @@ export const fetchQuestionnaireResponses = async (maxResults: number = 100) => {
       orderBy('createdAt', 'desc'),
       firestoreLimit(maxResults)
     );
-    
+
     const querySnapshot = await getDocs(q);
     const responses: any[] = [];
-    
+
     querySnapshot.forEach((doc) => {
       responses.push({
         id: doc.id,
         ...doc.data(),
       });
     });
-    
+
     return responses;
   } catch (error) {
     console.error('Error fetching questionnaire responses:', error);
@@ -292,7 +292,7 @@ export const fetchBetaTesters = async (limit: number = 100) => {
       orderBy('timestamp', 'desc'),
       firestoreLimit(limit)
     );
-    
+
     const querySnapshot = await getDocs(q);
     return querySnapshot.docs.map(doc => ({
       id: doc.id,
@@ -344,7 +344,7 @@ export const fetchWaitlistSignups = async (limit: number = 100) => {
       orderBy('timestamp', 'desc'),
       firestoreLimit(limit)
     );
-    
+
     const querySnapshot = await getDocs(q);
     return querySnapshot.docs.map(doc => ({
       id: doc.id,

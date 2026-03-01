@@ -7,7 +7,7 @@ import { logEvent as firebaseLogEvent } from 'firebase/analytics';
  */
 export const logEvent = (eventName: string, eventParams?: Record<string, any>) => {
   if (typeof window === 'undefined') return;
-  
+
   if (analytics) {
     try {
       firebaseLogEvent(analytics, eventName, eventParams);
@@ -40,66 +40,30 @@ export const trackSectionView = (sectionName: string) => {
   logEvent('section_view', { section_name: sectionName });
 };
 
-// ==================== QUESTIONNAIRE EVENTS ====================
+// ==================== BETA EVENTS ====================
 
 /**
- * Track when user starts questionnaire
+ * Track when beta program form is shown
  */
-export const trackQuestionnaireStart = () => {
-  logEvent('questionnaire_start', { 
-    timestamp: new Date().toISOString() 
+export const trackBetaView = (source: string) => {
+  logEvent('beta_view', { source });
+};
+
+/**
+ * Track beta signup success
+ */
+export const trackBetaSignup = (source: string, platform: string) => {
+  logEvent('beta_signup', {
+    source,
+    platform
   });
 };
 
 /**
- * Track each step progression
+ * Track when user skips beta signup
  */
-export const trackQuestionnaireStep = (stepId: string, stepNumber: number) => {
-  logEvent('questionnaire_step', { 
-    step_id: stepId, 
-    step_number: stepNumber 
-  });
-};
-
-/**
- * Track questionnaire completion
- */
-export const trackQuestionnaireComplete = (timeSpent: number) => {
-  logEvent('questionnaire_complete', { 
-    time_spent_seconds: timeSpent,
-    timestamp: new Date().toISOString()
-  });
-};
-
-/**
- * Track when user abandons questionnaire
- */
-export const trackQuestionnaireDropoff = (stepId: string, stepNumber: number) => {
-  logEvent('questionnaire_dropoff', { 
-    step_id: stepId, 
-    step_number: stepNumber,
-    timestamp: new Date().toISOString()
-  });
-};
-
-/**
- * Track individual question responses (without PII)
- */
-export const trackQuestionResponse = (questionId: string, responseType: string) => {
-  logEvent('question_response', { 
-    question_id: questionId,
-    response_type: responseType
-  });
-};
-
-/**
- * Track questionnaire exit
- */
-export const trackQuestionnaireExit = (stepId: string, stepNumber: number) => {
-  logEvent('questionnaire_exit', {
-    step_id: stepId,
-    step_number: stepNumber
-  });
+export const trackBetaSkip = (source: string) => {
+  logEvent('beta_skip', { source });
 };
 
 // ==================== WAITLIST EVENTS ====================
@@ -114,10 +78,10 @@ export const trackWaitlistView = (source: string) => {
 /**
  * Track waitlist signup success
  */
-export const trackWaitlistSignup = (source: string) => {
-  logEvent('waitlist_signup', { 
+export const trackWaitlistSignup = (source: string, platform: string) => {
+  logEvent('waitlist_signup', {
     source,
-    timestamp: new Date().toISOString()
+    platform
   });
 };
 

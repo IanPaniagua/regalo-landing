@@ -11,7 +11,7 @@ export const translations = {
       seeHowItWorks: "See How It Works",
       availableOn: "Available on iOS & Android",
     },
-    
+
     // Features
     features: {
       sectionTitle: "Everything You Need to Celebrate",
@@ -58,7 +58,7 @@ export const translations = {
       },
       moreFeatures: "Plus Many More Features",
     },
-    
+
     // CTA Section
     cta: {
       title: "Help Us Perfect RegaloApp",
@@ -77,10 +77,39 @@ export const translations = {
       },
       limitedSpots: "Limited spots available • Join now to secure your place",
       joinBeta: "Join Beta Testing",
+      joinWaitlist: "Join the Waitlist",
+      waitlistAlternative: {
+        text: "Or if you prefer, you can wait for the app to be ready. We'll notify you by email.",
+        button: "Join the Waitlist"
+      }
     },
-    
+
     // Waitlist
     waitlist: {
+      title: "Join the Waitlist",
+      subtitle: "RegaloApp is coming soon and we're looking for early adopters!",
+      description: "Get notified as soon as the app officially launches and be among the first to experience Regalo.",
+      nameLabel: "Your Name",
+      namePlaceholder: "Your name",
+      emailLabel: "Email Address",
+      emailPlaceholder: "Your email",
+      emailHelp: "Use your main email address",
+      platformLabel: "Your Platform",
+      platformIOS: "iOS (iPhone/iPad)",
+      platformAndroid: "Android",
+      submit: "Join Waitlist",
+      skip: "Maybe later",
+      errorAllFields: "Please fill in all fields",
+      errorSelectPlatform: "Please select your platform",
+      errorInvalidEmail: "Please enter a valid email",
+      errorGeneric: "Something went wrong. Please try again.",
+      successTitle: "You're on the list!",
+      successMessage: "We've added you to the waitlist. We'll send you an email as soon as RegaloApp is ready for you.",
+      backHome: "Back to Home",
+    },
+
+    // Beta
+    beta: {
       title: "Join the Beta Testing Program",
       subtitle: "RegaloApp is live and we're looking for founding members!",
       description: "Get immediate access to the app, help shape its future, and become part of our exclusive founding community. Limited spots available.",
@@ -92,7 +121,7 @@ export const translations = {
       platformLabel: "Your Platform",
       platformIOS: "iOS (iPhone/iPad)",
       platformAndroid: "Android",
-      submit: "Join Waitlist",
+      submit: "Join Beta",
       skip: "Maybe later",
       errorAllFields: "Please fill in all fields",
       errorSelectPlatform: "Please select your platform",
@@ -102,7 +131,7 @@ export const translations = {
       successMessage: "Check your email for download instructions and beta access details. You're now part of our founding community!",
       backHome: "Back to Home",
     },
-    
+
     // Questionnaire
     questionnaire: {
       exit: "Exit",
@@ -120,7 +149,7 @@ export const translations = {
       joinWaitlistCta: "Join Waitlist 🎉",
       maybeLater: "Maybe later, back to home",
     },
-    
+
     // Footer
     footer: {
       privacyPolicy: "Privacy Policy",
@@ -128,7 +157,7 @@ export const translations = {
       copyright: "All rights reserved.",
       language: "Language",
     },
-    
+
     // Cookie Banner
     cookies: {
       message: "We use cookies and similar technologies to analyze website traffic and improve your experience. By clicking \"Accept\", you consent to our use of cookies.",
@@ -136,14 +165,14 @@ export const translations = {
       accept: "Accept",
       decline: "Decline",
     },
-    
+
     // Privacy Policy
     privacy: {
       title: "Privacy Policy",
       lastUpdated: "Last updated:",
     },
   },
-  
+
   es: {
     // Hero
     hero: {
@@ -154,7 +183,7 @@ export const translations = {
       seeHowItWorks: "Ver Cómo Funciona",
       availableOn: "Disponible en iOS y Android",
     },
-    
+
     // Features
     features: {
       sectionTitle: "Todo lo que Necesitas para Celebrar",
@@ -201,7 +230,7 @@ export const translations = {
       },
       moreFeatures: "Y Muchas Más Funciones",
     },
-    
+
     // CTA Section
     cta: {
       title: "Ayúdanos a Perfeccionar RegaloApp",
@@ -220,32 +249,61 @@ export const translations = {
       },
       limitedSpots: "Plazas limitadas • Únete ahora para asegurar tu lugar",
       joinBeta: "Únete al Beta Testing",
+      joinWaitlist: "Únete a la Lista de Espera",
+      waitlistAlternative: {
+        text: "O si lo prefieres, puedes esperar a que la app esté lista. Te avisaremos por email.",
+        button: "Únete a la Lista de Espera"
+      }
     },
-    
+
     // Waitlist
     waitlist: {
-      title: "Únete al Programa de Beta Testing",
-      subtitle: "¡RegaloApp está disponible y buscamos miembros fundadores!",
-      description: "Obtén acceso inmediato a la app, ayuda a dar forma a su futuro y conviértete en parte de nuestra comunidad fundadora exclusiva. Plazas limitadas.",
+      title: "Únete a la Lista de Espera",
+      subtitle: "¡RegaloApp estará disponible pronto y buscamos a nuestros primeros usuarios!",
+      description: "Recibe una notificación en cuanto la app se lance oficialmente y sé uno de los primeros en experimentar Regalo.",
       nameLabel: "Tu Nombre",
       namePlaceholder: "Tu nombre",
-      emailLabel: "Tu Email",
-      emailPlaceholder: "tu@email.com",
-      emailHelp: "Usa tu email de Apple ID (iOS) o Google Play (Android) para acceder al beta",
+      emailLabel: "Correo Electrónico",
+      emailPlaceholder: "Tu correo electrónico",
+      emailHelp: "Usa tu correo principal",
       platformLabel: "Tu Plataforma",
       platformIOS: "iOS (iPhone/iPad)",
       platformAndroid: "Android",
-      submit: "Unirme a la Lista",
+      submit: "Unirse a la Lista de Espera",
       skip: "Quizás más tarde",
       errorAllFields: "Por favor completa todos los campos",
       errorSelectPlatform: "Por favor selecciona tu plataforma",
-      errorInvalidEmail: "Por favor introduce un email válido",
-      errorGeneric: "Algo salió mal. Inténtalo de nuevo.",
-      successTitle: "¡Bienvenido a RegaloApp Beta!",
-      successMessage: "Revisa tu email para instrucciones de descarga y detalles de acceso beta. ¡Ahora eres parte de nuestra comunidad fundadora!",
+      errorInvalidEmail: "Por favor introduce un correo válido",
+      errorGeneric: "Algo salió mal. Por favor intenta de nuevo.",
+      successTitle: "¡Estás en la lista!",
+      successMessage: "Te hemos añadido a la lista de espera. Te enviaremos un correo en cuanto RegaloApp esté lista para ti.",
       backHome: "Volver al Inicio",
     },
-    
+
+    // Beta
+    beta: {
+      title: "Únete al Programa Beta",
+      subtitle: "¡RegaloApp está en vivo y buscamos miembros fundadores!",
+      description: "Obtén acceso inmediato a la app, ayuda a dar forma a su futuro y únete a nuestra exclusiva comunidad fundadora. Plazas limitadas.",
+      nameLabel: "Tu Nombre",
+      namePlaceholder: "Tu nombre",
+      emailLabel: "Correo Electrónico",
+      emailPlaceholder: "Tu correo",
+      emailHelp: "Usa tu correo de Apple ID (iOS) o Google Play (Android) para acceso beta",
+      platformLabel: "Tu Plataforma",
+      platformIOS: "iOS (iPhone/iPad)",
+      platformAndroid: "Android",
+      submit: "Unirse a la Beta",
+      skip: "Quizás más tarde",
+      errorAllFields: "Por favor completa todos los campos",
+      errorSelectPlatform: "Por favor selecciona tu plataforma",
+      errorInvalidEmail: "Por favor introduce un correo válido",
+      errorGeneric: "Algo salió mal. Por favor intenta de nuevo.",
+      successTitle: "¡Bienvenido a la Beta de RegaloApp!",
+      successMessage: "Revisa tu correo para las instrucciones de descarga y detalles de acceso a la beta. ¡Ahora eres parte de nuestra comunidad fundadora!",
+      backHome: "Volver al Inicio",
+    },
+
     // Questionnaire
     questionnaire: {
       exit: "Salir",
@@ -263,7 +321,7 @@ export const translations = {
       joinWaitlistCta: "Únete a la Lista 🎉",
       maybeLater: "Quizás más tarde, volver al inicio",
     },
-    
+
     // Footer
     footer: {
       privacyPolicy: "Política de Privacidad",
@@ -271,7 +329,7 @@ export const translations = {
       copyright: "Todos los derechos reservados.",
       language: "Idioma",
     },
-    
+
     // Cookie Banner
     cookies: {
       message: "Usamos cookies y tecnologías similares para analizar el tráfico del sitio web y mejorar tu experiencia. Al hacer clic en \"Aceptar\", consientes el uso de cookies.",
@@ -279,14 +337,14 @@ export const translations = {
       accept: "Aceptar",
       decline: "Rechazar",
     },
-    
+
     // Privacy Policy
     privacy: {
       title: "Política de Privacidad",
       lastUpdated: "Última actualización:",
     },
   },
-  
+
   de: {
     // Hero
     hero: {
@@ -297,7 +355,7 @@ export const translations = {
       seeHowItWorks: "So Funktioniert's",
       availableOn: "Verfügbar für iOS & Android",
     },
-    
+
     // Features
     features: {
       sectionTitle: "Alles, Was Du Zum Feiern Brauchst",
@@ -344,7 +402,7 @@ export const translations = {
       },
       moreFeatures: "Und Viele Weitere Funktionen",
     },
-    
+
     // CTA Section
     cta: {
       title: "Hilf Uns, RegaloApp Zu Perfektionieren",
@@ -363,32 +421,61 @@ export const translations = {
       },
       limitedSpots: "Begrenzte Plätze verfügbar • Jetzt beitreten, um deinen Platz zu sichern",
       joinBeta: "Beta Testing Beitreten",
+      joinWaitlist: "Warteliste Beitreten",
+      waitlistAlternative: {
+        text: "Oder wenn Sie es vorziehen, können Sie warten, bis die App fertig ist. Wir benachrichtigen Sie per E-Mail.",
+        button: "Warteliste Beitreten"
+      }
     },
-    
+
     // Waitlist
     waitlist: {
-      title: "Tritt dem Beta-Testing-Programm bei",
-      subtitle: "RegaloApp ist live und wir suchen Gründungsmitglieder!",
-      description: "Erhalte sofortigen Zugang zur App, hilf bei der Gestaltung ihrer Zukunft und werde Teil unserer exklusiven Gründer-Community. Begrenzte Plätze verfügbar.",
-      nameLabel: "Dein Name",
-      namePlaceholder: "Dein Name",
-      emailLabel: "Deine E-Mail",
-      emailPlaceholder: "deine@email.com",
-      emailHelp: "Verwende deine Apple ID E-Mail (iOS) oder Google Play E-Mail (Android) für Beta-Zugang",
-      platformLabel: "Deine Plattform",
+      title: "Der Warteliste Beitreten",
+      subtitle: "RegaloApp kommt bald und wir suchen Early Adopters!",
+      description: "Werden Sie benachrichtigt, sobald die App offiziell startet und gehören Sie zu den Ersten, die Regalo erleben.",
+      nameLabel: "Ihr Name",
+      namePlaceholder: "Ihr Name",
+      emailLabel: "E-Mail-Adresse",
+      emailPlaceholder: "Ihre E-Mail",
+      emailHelp: "Verwenden Sie Ihre Haupt-E-Mail-Adresse",
+      platformLabel: "Ihre Plattform",
       platformIOS: "iOS (iPhone/iPad)",
       platformAndroid: "Android",
-      submit: "Warteliste beitreten",
+      submit: "Warteliste Beitreten",
       skip: "Vielleicht später",
-      errorAllFields: "Bitte fülle alle Felder aus",
-      errorSelectPlatform: "Bitte wähle deine Plattform",
-      errorInvalidEmail: "Bitte gib eine gültige E-Mail-Adresse ein",
-      errorGeneric: "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
-      successTitle: "Willkommen bei RegaloApp Beta!",
-      successMessage: "Überprüfe deine E-Mail für Download-Anweisungen und Beta-Zugangsdetails. Du bist jetzt Teil unserer Gründer-Community!",
-      backHome: "Zur Startseite",
+      errorAllFields: "Bitte füllen Sie alle Felder aus",
+      errorSelectPlatform: "Bitte wählen Sie Ihre Plattform",
+      errorInvalidEmail: "Bitte geben Sie eine gültige E-Mail ein",
+      errorGeneric: "Etwas ist schief gelaufen. Bitte versuchen Sie es erneut.",
+      successTitle: "Sie stehen auf der Liste!",
+      successMessage: "Wir haben Sie auf die Warteliste gesetzt. Wir senden Ihnen eine E-Mail, sobald RegaloApp für Sie bereit ist.",
+      backHome: "Zurück zur Startseite",
     },
-    
+
+    // Beta
+    beta: {
+      title: "Dem Beta-Programm Beitreten",
+      subtitle: "RegaloApp ist live und wir suchen Gründungsmitglieder!",
+      description: "Erhalten Sie sofortigen Zugang zur App, helfen Sie, ihre Zukunft zu gestalten, und werden Sie Teil unserer exklusiven Entwickler-Community. Begrenzte Plätze.",
+      nameLabel: "Ihr Name",
+      namePlaceholder: "Ihr Name",
+      emailLabel: "E-Mail-Adresse",
+      emailPlaceholder: "Ihre E-Mail",
+      emailHelp: "Verwenden Sie Ihre Apple-ID- (iOS) oder Google-Play-E-Mail (Android) für den Beta-Zugang",
+      platformLabel: "Ihre Plattform",
+      platformIOS: "iOS (iPhone/iPad)",
+      platformAndroid: "Android",
+      submit: "Beta Beitreten",
+      skip: "Vielleicht später",
+      errorAllFields: "Bitte füllen Sie alle Felder aus",
+      errorSelectPlatform: "Bitte wählen Sie Ihre Plattform",
+      errorInvalidEmail: "Bitte geben Sie eine gültige E-Mail ein",
+      errorGeneric: "Etwas ist schief gelaufen. Bitte versuchen Sie es erneut.",
+      successTitle: "Willkommen in der RegaloApp Beta!",
+      successMessage: "Überprüfen Sie Ihre E-Mails auf Download-Anweisungen und Details zum Beta-Zugang. Sie sind jetzt Teil unserer Community!",
+      backHome: "Zurück zur Startseite",
+    },
+
     // Questionnaire
     questionnaire: {
       exit: "Beenden",
@@ -406,7 +493,7 @@ export const translations = {
       joinWaitlistCta: "Warteliste beitreten 🎉",
       maybeLater: "Vielleicht später, zurück zur Startseite",
     },
-    
+
     // Footer
     footer: {
       privacyPolicy: "Datenschutzerklärung",
@@ -414,7 +501,7 @@ export const translations = {
       copyright: "Alle Rechte vorbehalten.",
       language: "Sprache",
     },
-    
+
     // Cookie Banner
     cookies: {
       message: "Wir verwenden Cookies und ähnliche Technologien, um den Website‑Verkehr zu analysieren und deine Erfahrung zu verbessern. Mit Klick auf \"Akzeptieren\" stimmst du der Nutzung zu.",
@@ -422,7 +509,7 @@ export const translations = {
       accept: "Akzeptieren",
       decline: "Ablehnen",
     },
-    
+
     // Privacy Policy
     privacy: {
       title: "Datenschutzerklärung",
